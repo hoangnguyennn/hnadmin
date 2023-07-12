@@ -3,7 +3,6 @@ import { API_BASE_URL } from '@hn/constants'
 import { BAD_REQUEST_MESSAGE, OFFLINE_MESSAGE } from './apiErrors'
 import { useAuthStore } from '@hn/store/authStore'
 import ApiUtil from '@hn/utils/api.util'
-import { ElNotification } from 'element-plus'
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL
@@ -32,11 +31,7 @@ apiClient.interceptors.response.use(
     const reason = response.data.reason
 
     const errorMessage = ApiUtil.getErrorMessage(reason, BAD_REQUEST_MESSAGE)
-
-    ElNotification({
-      message: errorMessage,
-      position: 'bottom-left'
-    })
+    console.log({ errorMessage })
   }
 )
 

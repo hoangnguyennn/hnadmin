@@ -1,0 +1,123 @@
+.bx-select {
+  @extend .bx-input;
+  @extend .outline-0;
+
+  position: relative;
+
+  &:focus:not(.bx-select--disabled) {
+    .bx-select--placeholder {
+      @extend .outline-0;
+      @extend .border-blue;
+      @extend .shadow-blue;
+      @extend .radius-4;
+    }
+  }
+
+  &.bx-select--disabled {
+    @extend .bx-input--disabled;
+
+    .bx-select--placeholder {
+      cursor: default;
+    }
+  }
+
+  .bx-select--placeholder {
+    @extend .bx-input--control;
+
+    position: relative;
+    padding-right: 50px;
+    cursor: pointer;
+
+    .selection,
+    .placeholder {
+      min-height: 20px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .placeholder {
+      @extend .text-gray;
+    }
+
+    .caret {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      transition: all 0.3s linear;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+
+        width: 8px;
+        height: 8px;
+        border: 2px solid transparent;
+        border-right-color: $gray;
+        border-bottom-color: $gray;
+      }
+    }
+  }
+
+  .bx-select--error {
+    @extend .bx-input--error;
+  }
+
+  &.show {
+    .caret {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.error:not(.bx-select--disabled) {
+    &:focus {
+      .bx-select--placeholder {
+        @extend .bg-red-2;
+        @extend .border-red;
+        @extend .outline-0;
+        @extend .shadow-red;
+      }
+    }
+  }
+}
+
+.bx-select--list {
+  @extend .p-5;
+  @extend .bg-white;
+  @extend .radius-4;
+  @extend .shadow-gray;
+
+  position: fixed;
+  z-index: 999;
+
+  .bx-select--item {
+    @extend .p-5;
+    @extend .radius-4;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &.selected,
+    &:hover {
+      @extend .bg-blue-1;
+    }
+
+    &.disabled {
+      @extend .bg-gray-1;
+
+      cursor: default;
+    }
+
+    & + .bx-select--item {
+      margin-top: 5px;
+    }
+  }
+}

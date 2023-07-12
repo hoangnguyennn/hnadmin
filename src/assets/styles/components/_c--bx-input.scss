@@ -10,6 +10,7 @@
     @extend .border-transparent;
     @extend .radius-4;
 
+    min-width: 240px;
     width: 100%;
     font-size: 1rem;
     transition: all 0.1s linear;

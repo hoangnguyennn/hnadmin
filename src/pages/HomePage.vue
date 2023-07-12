@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import BxTextarea from '@hn/components/common/BxTextarea.vue'
+import { ref } from 'vue'
+import BxSelect from '@hn/components/common/BxSelect.vue'
 
-const input = ref('')
-
-const errorMessage = computed(() => {
-  return input.value ? '' : 'The input is required'
-})
+const selected = ref()
+const selected2 = ref(1)
 </script>
 
 <template>
@@ -16,39 +13,75 @@ const errorMessage = computed(() => {
     <div class="mt-5">
       <h3>Default</h3>
 
-      <bx-textarea :rows="10" placeholder="Please input" />
+      <bx-select :items="[1, 2, 3, 4, 5]" placeholder="Please select" />
     </div>
 
     <div class="mt-5">
       <h3>Disabled</h3>
 
-      <bx-textarea placeholder="Please input" disabled />
+      <bx-select
+        :items="[1, 2, 3, 4, 5]"
+        placeholder="Please select"
+        disabled
+      />
     </div>
 
     <div class="mt-5">
-      <h3>Fixed</h3>
+      <h3>Object items</h3>
 
-      <bx-textarea placeholder="Please input" fixed :rows="7" />
+      <bx-select
+        v-model="selected"
+        :items="[
+          {
+            id: 1,
+            name: '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+          },
+          { id: 2, name: 222 },
+          { id: 3, name: 333 },
+          { id: 4, name: 444 },
+          { id: 5, name: 555 }
+        ]"
+        item-title="name"
+        item-value="id"
+        placeholder="Please select"
+      />
+    </div>
+
+    <div class="mt-5">
+      <h3>Disabled item</h3>
+
+      <bx-select
+        v-model="selected2"
+        :items="[
+          { id: 1, name: 111 },
+          { id: 2, name: 222 },
+          { id: 3, name: 333 },
+          { id: 4, name: 444 },
+          { id: 5, name: 555, disabled: true }
+        ]"
+        item-title="name"
+        item-value="id"
+        placeholder="Please select"
+      />
     </div>
 
     <div class="mt-5">
       <h3>Error</h3>
 
-      <bx-textarea
-        v-model="input"
-        placeholder="Please input"
-        :error-message="errorMessage"
+      <bx-select
+        :items="[1, 2, 3, 4, 5]"
+        error-message="The select is required."
+        placeholder="Please select"
       />
     </div>
 
     <div class="mt-5">
-      <h3>Auto size</h3>
+      <h3>Multiple</h3>
 
-      <bx-textarea
-        placeholder="Please input"
-        auto-size
-        :min-rows="2"
-        :max-rows="10"
+      <bx-select
+        :items="[1, 2, 3, 4, 5]"
+        placeholder="Please select"
+        multiple
       />
     </div>
   </div>
