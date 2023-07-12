@@ -4,31 +4,16 @@
   margin: 0;
   font-family: inherit;
   line-height: 1.25;
+  border: 0 solid $gray;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.25;
-
-  @extend .bg-gray-1;
-}
-
-button {
-  border-style: solid;
+  background-color: rgba($gray, 0.1);
 }
 
 a {
   text-decoration: none;
-}
-
-.active {
-  @extend .bg-blue-1;
-}
-
-.disabled {
-  @extend .bg-gray-1;
-  @extend .text-gray;
-
-  cursor: default;
 }

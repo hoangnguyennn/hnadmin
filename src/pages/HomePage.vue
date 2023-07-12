@@ -73,7 +73,7 @@ const slider2 = ref(50)
           <bx-button variant="gray">Click me</bx-button>
         </div>
 
-        <h4>Outline</h4>
+        <h4>Outlined</h4>
         <div style="display: flex; gap: 10px">
           <bx-button outlined>Click me</bx-button>
           <bx-button outlined variant="blue">Click me</bx-button>
@@ -81,6 +81,16 @@ const slider2 = ref(50)
           <bx-button outlined variant="red">Click me</bx-button>
           <bx-button outlined variant="yellow">Click me</bx-button>
           <bx-button outlined variant="gray">Click me</bx-button>
+        </div>
+
+        <h4>Rounded</h4>
+        <div style="display: flex; gap: 10px">
+          <bx-button rounded>Click me</bx-button>
+          <bx-button rounded variant="blue">Click me</bx-button>
+          <bx-button rounded variant="green">Click me</bx-button>
+          <bx-button rounded variant="red">Click me</bx-button>
+          <bx-button rounded variant="yellow">Click me</bx-button>
+          <bx-button rounded variant="gray">Click me</bx-button>
         </div>
 
         <h4>Disabled</h4>
@@ -93,7 +103,7 @@ const slider2 = ref(50)
           <bx-button disabled variant="gray">Click me</bx-button>
         </div>
 
-        <h4>Disabled + outline</h4>
+        <h4>Disabled + outlined</h4>
         <div style="display: flex; gap: 10px">
           <bx-button disabled outlined>Click me</bx-button>
           <bx-button disabled outlined variant="blue">Click me</bx-button>

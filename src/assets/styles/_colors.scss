@@ -1,50 +1,40 @@
-// base colors
-@each $color, $value in $colors {
-  .text-#{$color} {
-    color: $value;
-  }
+$colors: (
+  'blue': $blue,
+  'green': $green,
+  'red': $red,
+  'yellow': $yellow,
+  'black': $black,
+  'gray': $gray,
+  'white': $white,
+  'transparent': transparent
+);
 
-  .bg-#{$color} {
-    background-color: $value;
-  }
+$color_properties: (
+  'text': color,
+  'bg': background-color,
+  'border': border-color,
+  'border-t': border-top-color,
+  'border-b': border-bottom-color,
+  'border-l': border-left-color,
+  'border-r': border-right-color,
+  'border-x': (
+    border-left-color,
+    border-right-color
+  ),
+  'border-y': (
+    border-top-color,
+    border-bottom-color
+  )
+);
 
-  .border-#{$color} {
-    border-style: solid;
-    border-color: $value;
-  }
-}
+$variants: (
+  'blue': $blue,
+  'green': $green,
+  'red': $red,
+  'yellow': $yellow,
+  'gray': $gray
+);
 
-// range of colors by opacity
-@for $i from 1 through 9 {
-  @each $color, $value in $colors {
-    .text-#{$color}-#{$i} {
-      color: rgba($value, multiple($i, 0.1));
-    }
-
-    .bg-#{$color}-#{$i} {
-      background-color: rgba($value, multiple($i, 0.1));
-    }
-
-    .border-#{$color}-#{$i} {
-      border-style: solid;
-      border-color: rgba($value, multiple($i, 0.1));
-    }
-  }
-}
-
-// outline
-.outline-0 {
-  outline: none;
-}
-
-@each $variant, $value in $variants {
-  .outline-#{$variant} {
-    outline: solid $value;
-  }
-}
-
-@each $variant, $value in $variants {
-  .shadow-#{$variant} {
-    box-shadow: 0 0 10px $value;
-  }
-}
+@include color_classes($colors, $color_properties);
+@include outline_classes($variants);
+@include shadow_classes($variants);

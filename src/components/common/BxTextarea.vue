@@ -5,13 +5,14 @@
       v-model="modelValue"
       type="text"
       :rows="rows"
-      class="bx-textarea--control"
+      class="bx-textarea__control"
       :placeholder="placeholder"
       :disabled="disabled"
       @input="handleChangeHeight"
     ></textarea>
+
     <Transition name="fade">
-      <div v-if="errorMessage" class="bx-textarea--error">
+      <div v-if="errorMessage" class="bx-textarea__error">
         {{ errorMessage }}
       </div>
     </Transition>
@@ -61,7 +62,7 @@ const inputClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-input--disabled')
+    classes.push('disabled')
     classes.push('fixed')
   }
 

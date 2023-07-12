@@ -1,44 +1,94 @@
-.border {
-  border-width: 1px;
-}
+$margins: (
+  'm': margin,
+  'ml': margin-left,
+  'mr': margin-right,
+  'mt': margin-top,
+  'mb': margin-bottom,
+  'mx': (
+    margin-left,
+    margin-right
+  ),
+  'my': (
+    margin-top,
+    margin-bottom
+  )
+);
 
-.rounded {
-  border-radius: 999px;
-}
+$negative_margins: (
+  '-m': margin,
+  '-ml': margin-left,
+  '-mr': margin-right,
+  '-mt': margin-top,
+  '-mb': margin-bottom,
+  '-mx': (
+    margin-left,
+    margin-right
+  ),
+  '-my': (
+    margin-top,
+    margin-bottom
+  )
+);
 
-@for $i from 0 through 10 {
-  .radius-#{$i} {
-    border-radius: multiple($unit, $i);
-  }
+$paddings: (
+  'p': padding,
+  'pl': padding-left,
+  'pr': padding-right,
+  'pt': padding-top,
+  'pb': padding-bottom,
+  'px': (
+    padding-left,
+    padding-right
+  ),
+  'py': (
+    padding-top,
+    padding-bottom
+  )
+);
 
-  .border-#{$i} {
-    border-width: multiple($unit, $i);
-  }
+$border_widths: (
+  'border': border-width,
+  'border-l': border-left-width,
+  'border-r': border-right-width,
+  'border-t': border-top-width,
+  'border-b': border-bottom-width,
+  'border-x': (
+    border-left-width,
+    border-right-width
+  ),
+  'border-y': (
+    border-top-width,
+    border-bottom-width
+  )
+);
 
-  // margin
-  @each $prefix, $properties in $margins {
-    .#{$prefix}-#{$i} {
-      @each $property in $properties {
-        @include generate_property($property, multiple($unit, $i));
-      }
-    }
-  }
+$radius: (
+  'rounded': border-radius,
+  'rounded-tl': border-top-left-radius,
+  'rounded-tr': border-top-right-radius,
+  'rounded-bl': border-bottom-left-radius,
+  'rounded-br': border-bottom-right-radius,
+  'rounded-t': (
+    border-top-left-radius,
+    border-top-right-radius
+  ),
+  'rounded-b': (
+    border-bottom-left-radius,
+    border-bottom-right-radius
+  ),
+  'rounded-l': (
+    border-top-left-radius,
+    border-bottom-left-radius
+  ),
+  'rounded-r': (
+    border-top-right-radius,
+    border-bottom-right-radius
+  )
+);
 
-  // negative margin
-  @each $prefix, $properties in $margins {
-    .#{$prefix}-n#{$i} {
-      @each $property in $properties {
-        @include generate_property($property, multiple(-$unit, $i));
-      }
-    }
-  }
-
-  // padding
-  @each $prefix, $properties in $paddings {
-    .#{$prefix}-#{$i} {
-      @each $property in $properties {
-        @include generate_property($property, multiple($unit, $i));
-      }
-    }
-  }
-}
+@include spacing_classes($margins);
+@include spacing_classes($paddings);
+@include spacing_classes($border_widths);
+@include spacing_classes($radius);
+@include spacing_classes_with_specific_value($border_widths, 1px);
+@include spacing_classes_with_specific_value($radius, 9999px);

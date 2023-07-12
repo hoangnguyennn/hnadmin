@@ -3,13 +3,14 @@
     <input
       :id="id"
       v-model="checked"
-      class="bx-switch--control"
+      class="bx-switch__control"
       type="checkbox"
       :tabindex="tabindex"
       :disabled="disabled"
       :value="value"
     />
-    <label v-if="label" :for="id" class="bx-switch--label">{{ label }}</label>
+
+    <label v-if="label" :for="id" class="bx-switch__label">{{ label }}</label>
   </div>
 </template>
 
@@ -52,7 +53,7 @@ const switchClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-switch--disabled')
+    classes.push('disabled')
   }
 
   return classes.join(', ')

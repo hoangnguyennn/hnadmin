@@ -47,15 +47,15 @@ const btnClasses = computed(() => {
   }
 
   if (props.outlined) {
-    classes.push('bx-button--outlined')
+    classes.push('outlined')
   }
 
   if (props.rounded) {
-    classes.push('bx-button--rounded')
+    classes.push('rounded')
   }
 
   if (props.disabled) {
-    classes.push('bx-button--disabled')
+    classes.push('disabled')
   }
 
   return classes.join(' ')

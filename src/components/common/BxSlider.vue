@@ -1,10 +1,12 @@
 <template>
   <div ref="bxSliderRef" class="bx-slider" :class="sliderClasses">
-    <div class="bx-slider--track"></div>
-    <div class="bx-slider--active-track" :style="activeTrackStyles"></div>
+    <div class="bx-slider__track"></div>
+
+    <div class="bx-slider__active-track" :style="activeTrackStyles"></div>
+
     <div
       ref="bxSliderControlRef"
-      class="bx-slider--control"
+      class="bx-slider__control"
       :style="controllerStyles"
       :tabindex="disabled ? -1 : 0"
     ></div>
@@ -59,7 +61,7 @@ const sliderClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-slider--disabled')
+    classes.push('disabled')
   }
 
   return classes.join(' ')

@@ -1,18 +1,19 @@
 <template>
   <div class="bx-checkbox" :class="checkboxClasses">
-    <div class="bx-checkbox--control-wrap">
+    <div class="bx-checkbox__control-wrap">
       <input
         :id="id"
         v-model="checked"
-        class="bx-checkbox--control"
+        class="bx-checkbox__control"
         type="checkbox"
         :tabindex="tabindex"
         :disabled="disabled"
         :value="value"
       />
-      <div class="bx-checkbox--icon"></div>
+      <div class="bx-checkbox__icon"></div>
     </div>
-    <label v-if="label" :for="id" class="bx-checkbox--label">{{ label }}</label>
+
+    <label v-if="label" :for="id" class="bx-checkbox__label">{{ label }}</label>
   </div>
 </template>
 
@@ -55,7 +56,7 @@ const checkboxClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-checkbox--disabled')
+    classes.push('disabled')
   }
 
   return classes.join(', ')

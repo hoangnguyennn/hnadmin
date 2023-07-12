@@ -2,96 +2,83 @@
   display: flex;
   align-items: center;
 
-  .bx-radio--control-wrap {
+  &__control-wrap {
     width: 40px;
     height: 40px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex_center;
     position: relative;
-
-    .bx-radio--control {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
-      z-index: 1;
-
-      &:checked {
-        + .bx-radio--icon {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          &:before {
-            content: '';
-            width: 12px;
-            height: 12px;
-
-            @extend .rounded;
-            @extend .bg-blue;
-          }
-        }
-      }
-
-      &:focus {
-        outline: none;
-
-        + .bx-radio--icon:after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-          z-index: -1;
-
-          @extend .bg-blue-1;
-        }
-      }
-    }
-
-    .bx-radio--icon {
-      @extend .bg-white;
-      @extend .border-blue;
-      @extend .border-1;
-      @extend .rounded;
-
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-
-      position: relative;
-    }
   }
 
-  .bx-radio--label {
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-color: $white;
+    border: border($blue, spacing(1));
+    border-radius: 50%;
     cursor: pointer;
+    position: relative;
   }
 
-  &.bx-radio--disabled {
-    @extend .text-gray;
+  &__control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
 
-    .bx-radio--control {
-      cursor: default;
+    &:focus {
+      outline: none;
 
-      &:checked + .bx-radio--icon:before {
-        @extend .bg-gray;
+      + &__icon:after {
+        @include absolute_center;
+        content: '';
+        width: 40px;
+        height: 40px;
+        background-color: rgba($blue, 0.1);
+        border-radius: 50%;
+        z-index: -1;
       }
     }
+  }
 
-    .bx-radio--icon {
-      @extend .border-gray;
-    }
+  &__control:checked + &__icon {
+    @include flex_center;
 
-    .bx-radio--label {
-      cursor: default;
+    &:before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background-color: $blue;
+      border-radius: 50%;
     }
+  }
+
+  &__label {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &.disabled {
+    color: $gray;
+  }
+
+  &.disabled &__control {
+    cursor: default;
+  }
+
+  &.disabled &__control:checked + &__icon:before {
+    background-color: $gray;
+  }
+
+  &.disabled &__icon {
+    border-color: $gray;
+  }
+
+  &.disabled &__label {
+    cursor: default;
   }
 }

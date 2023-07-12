@@ -3,7 +3,7 @@
   align-items: center;
   height: 40px;
 
-  .bx-switch--control {
+  &__control {
     appearance: none;
     width: 44px;
     height: 18px;
@@ -22,14 +22,13 @@
       height: 24px;
       top: 50%;
       left: -3px;
+      background-color: $white;
       transform: translateY(-50%);
       box-shadow: 0 0 10px rgba($black, 0.25);
       cursor: pointer;
       transition: all 0.1s linear;
+      border-radius: 50%;
       z-index: 2;
-
-      @extend .bg-white;
-      @extend .rounded;
     }
 
     &:after {
@@ -39,17 +38,16 @@
       height: 40px;
       top: 50%;
       left: -11px;
+      background-color: rgba($blue, 0.1);
       transform: translateY(-50%);
       cursor: pointer;
       transition: all 0.1s linear;
       display: none;
-
-      @extend .bg-blue-1;
-      @extend .rounded;
+      border-radius: 50%;
     }
 
     &:checked {
-      @extend .bg-blue;
+      background-color: $blue;
 
       &:before {
         left: calc(100% + 3px - 24px);
@@ -69,30 +67,25 @@
     }
   }
 
-  .bx-switch--label {
+  &__label {
     margin-left: 11px;
     cursor: pointer;
     user-select: none;
   }
 
-  &.bx-switch--disabled {
+  &.disabled &__control {
+    background-color: rgba($gray, 0.1);
+    box-shadow: none;
     cursor: default;
-    @extend .text-gray;
 
-    .bx-switch--control {
-      @extend .bg-gray-1;
+    &:before {
+      background-color: $gray;
       box-shadow: none;
       cursor: default;
-
-      &:before {
-        @extend .bg-gray;
-        box-shadow: none;
-        cursor: default;
-      }
     }
+  }
 
-    .bx-switch--label {
-      cursor: default;
-    }
+  &.disabled &__label {
+    cursor: default;
   }
 }

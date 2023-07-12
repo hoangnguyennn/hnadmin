@@ -1,119 +1,87 @@
 .bx-button {
-  @extend .px-10;
-  @extend .py-5;
-  @extend .bg-white;
-  @extend .text-black;
-  @extend .border-black;
-  @extend .border;
-  @extend .radius-4;
-
+  padding-left: spacing(10);
+  padding-right: spacing(10);
+  padding-top: spacing(5);
+  padding-bottom: spacing(5);
+  background-color: $white;
+  color: $black;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
+  border: border($black);
+  border-radius: spacing(4);
   cursor: pointer;
   transition: all 0.1s linear;
 
   &:hover,
   &:focus {
-    @extend .text-blue;
-    @extend .border-blue;
+    background-color: rgba($blue, 0.1);
+    color: $blue;
+  }
+
+  &:hover {
+    border-color: $blue;
   }
 
   &:focus {
-    @extend .border-white;
-    @extend .outline-blue;
+    border-color: $white;
+    outline: outline($blue);
   }
 
-  &.bx-button--outlined {
-    @extend .border-black;
-
-    &:hover,
-    &:focus {
-      @extend .border-blue;
-    }
-
-    &:focus {
-      @extend .border-white;
-    }
-
-    &.bx-button--disabled {
-      &,
-      &:hover,
-      &:focus {
-        @extend .border-gray-5;
-      }
-    }
+  &.rounded {
+    border-radius: 9999px;
   }
 
-  &.bx-button--rounded {
-    @extend .rounded;
+  &.outlined:hover,
+  &.outlined:focus {
+    border-color: $blue;
   }
 
-  &.bx-button--disabled {
-    &,
-    &:hover,
-    &:focus {
-      @extend .bg-white-5;
-      @extend .text-black-5;
-      @extend .border-black-5;
-
-      cursor: default;
-    }
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus {
+    background-color: rgba($white, 0.5);
+    color: rgba($black, 0.5);
+    border-color: rgba($black, 0.5);
+    cursor: default;
   }
 
-  @each $variant, $value in $variants {
-    &.bx-button--#{$variant} {
-      @extend .text-white;
-      @extend .border-#{$variant};
-      @extend .bg-#{$variant};
+  @each $variant, $color in $variants {
+    &#{&}--#{$variant} {
+      background-color: $color;
+      color: $white;
+      border-color: $color;
 
       &:hover,
       &:focus {
-        @extend .bg-#{$variant}-8;
+        background-color: rgba($color, 0.8);
       }
 
       &:focus {
-        @extend .outline-#{$variant};
+        border-color: $white;
+        outline: outline($color);
       }
 
-      &.bx-button--disabled {
-        &,
-        &:hover,
-        &:focus {
-          @extend .text-white-5;
-          @extend .border-#{$variant}-5;
-          @extend .bg-#{$variant}-5;
+      &.outlined {
+        background-color: rgba($color, 0.1);
+        color: $color;
+        border-color: $color;
+
+        &.disabled,
+        &.disabled:hover,
+        &.disabled:focus {
+          background-color: rgba($color, 0.1);
+          color: rgba($color, 0.5);
+          border-color: rgba($color, 0.5);
         }
       }
 
-      &.bx-button--outlined {
-        @extend .bg-#{$variant}-1;
-        @extend .text-#{$variant};
-        @extend .border-#{$variant};
-
-        &:hover,
-        &:focus {
-          @extend .bg-#{$variant};
-          @extend .text-white;
-        }
-
-        &:hover {
-          @extend .border-#{$variant};
-        }
-
-        &:focus {
-          @extend .border-white;
-        }
-
-        &.bx-button--disabled {
-          &,
-          &:hover,
-          &:focus {
-            @extend .bg-#{$variant}-1;
-            @extend .text-#{$variant}-5;
-            @extend .border-#{$variant}-5;
-          }
-        }
+      &.disabled,
+      &.disabled:hover,
+      &.disabled:focus {
+        background-color: rgba($color, 0.5);
+        color: rgba($white, 0.5);
+        border-color: rgba($color, 0.5);
       }
     }
   }

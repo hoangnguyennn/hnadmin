@@ -1,44 +1,38 @@
 .bx-select {
-  @extend .bx-input;
-  @extend .outline-0;
+  outline: none;
 
-  position: relative;
-
-  &:focus:not(.bx-select--disabled) {
-    .bx-select--placeholder {
-      @extend .outline-0;
-      @extend .border-blue;
-      @extend .shadow-blue;
-      @extend .radius-4;
-    }
-  }
-
-  &.bx-select--disabled {
-    @extend .bx-input--disabled;
-
-    .bx-select--placeholder {
-      cursor: default;
-    }
-  }
-
-  .bx-select--placeholder {
-    @extend .bx-input--control;
-
-    position: relative;
+  &__placeholder {
+    padding: spacing(5);
     padding-right: 50px;
+    min-width: $min-width;
+    width: 100%;
+    background-color: $white;
+    color: $black;
+    font-size: 1rem;
+    border: border(transparent);
+    border-radius: spacing(4);
+    position: relative;
     cursor: pointer;
+    user-select: none;
+
+    &:focus {
+      outline: outline($blue);
+      border-color: $blue;
+    }
+
+    &::placeholder {
+      font-family: inherit;
+      color: $gray;
+    }
 
     .selection,
     .placeholder {
       min-height: 20px;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @include text_ellipsis;
     }
 
     .placeholder {
-      @extend .text-gray;
+      color: $gray;
     }
 
     .caret {
@@ -58,51 +52,62 @@
 
         width: 8px;
         height: 8px;
-        border: 2px solid transparent;
+        border: border(transparent, spacing(1));
         border-right-color: $gray;
         border-bottom-color: $gray;
       }
     }
   }
 
-  .bx-select--error {
-    @extend .bx-input--error;
+  &__error {
+    margin-top: spacing(2);
+    padding-left: spacing(5);
+    padding-right: spacing(5);
+    color: $red;
+    font-size: 12px;
   }
 
-  &.show {
+  &:focus &__placeholder {
+    outline: outline($blue);
+    border-color: $blue;
+  }
+
+  &.show &__placeholder {
     .caret {
       transform: rotate(180deg);
     }
   }
 
-  &.error:not(.bx-select--disabled) {
+  &.disabled &__placeholder {
+    @include disabled;
+
+    border-color: transparent;
+    outline: none;
+    cursor: default;
+  }
+
+  &.error &__placeholder {
+    border-color: $red;
+    background-color: rgba($red, 0.2);
+    outline: none;
+
     &:focus {
-      .bx-select--placeholder {
-        @extend .bg-red-2;
-        @extend .border-red;
-        @extend .outline-0;
-        @extend .shadow-red;
-      }
+      outline: outline($red);
     }
   }
 }
 
-.bx-select--list {
-  @extend .p-5;
-  @extend .bg-white;
-  @extend .radius-4;
-  @extend .shadow-gray;
+.bx-select__list {
+  padding: spacing(5);
+  background-color: $white;
+  border-radius: spacing(4);
+  box-shadow: shadow($gray);
 
   position: fixed;
   z-index: 999;
 
-  .bx-select--item {
-    &:not(.multiple) {
-      @extend .p-5;
-    }
-
-    @extend .radius-4;
-
+  .bx-select__item {
+    border-radius: spacing(4);
     cursor: pointer;
     user-select: none;
 
@@ -110,24 +115,24 @@
     align-items: center;
 
     span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @include text_ellipsis;
     }
 
     &.selected,
     &:hover {
-      @extend .bg-blue-1;
+      background-color: rgba($blue, 0.1);
     }
 
     &.disabled {
-      @extend .bg-gray-1;
-
-      cursor: default;
+      @include disabled;
     }
 
-    & + .bx-select--item {
+    + .bx-select__item {
       margin-top: 5px;
     }
+  }
+
+  &:not(.multiple) .bx-select__item {
+    padding: spacing(5);
   }
 }

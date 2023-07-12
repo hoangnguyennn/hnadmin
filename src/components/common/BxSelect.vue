@@ -7,7 +7,7 @@
   >
     <div
       ref="bxSelectPlaceholderRef"
-      class="bx-select--placeholder"
+      class="bx-select__placeholder"
       @click="onToggle"
     >
       <div v-if="selectionPlaceholder" class="selection">
@@ -17,18 +17,21 @@
 
       <div class="caret"></div>
     </div>
-    <div class="bx-select--error">{{ errorMessage }}</div>
+
+    <div class="bx-select__error">{{ errorMessage }}</div>
+
     <Teleport to="#modal">
       <div
         v-if="isOpen"
         ref="bxSelectListRef"
-        class="bx-select--list"
+        class="bx-select__list"
+        :class="selectListClasses"
         :style="dropdownStyles"
       >
         <div
           v-for="(item, index) in displayItems"
           :key="index"
-          class="bx-select--item"
+          class="bx-select__item"
           :class="getItemClasses(item)"
           @click="onSelect(item)"
         >
@@ -150,7 +153,7 @@ const selectClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-select--disabled')
+    classes.push('disabled')
   }
 
   if (isOpen.value) {
@@ -159,6 +162,16 @@ const selectClasses = computed(() => {
 
   if (props.errorMessage) {
     classes.push('error')
+  }
+
+  return classes.join(' ')
+})
+
+const selectListClasses = computed(() => {
+  const classes: string[] = []
+
+  if (props.multiple) {
+    classes.push('multiple')
   }
 
   return classes.join(' ')
@@ -206,10 +219,6 @@ const getItemClasses = (item: any) => {
 
   if (isSelectedItem(item)) {
     classes.push('selected')
-  }
-
-  if (props.multiple) {
-    classes.push('multiple')
   }
 
   return classes.join(' ')

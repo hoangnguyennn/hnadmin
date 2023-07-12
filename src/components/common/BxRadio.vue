@@ -1,19 +1,20 @@
 <template>
   <div class="bx-radio" :class="radioClasses">
-    <div class="bx-radio--control-wrap">
+    <div class="bx-radio__control-wrap">
       <input
         :id="id"
         v-model="checked"
-        class="bx-radio--control"
+        class="bx-radio__control"
         type="radio"
         :name="name"
         :tabindex="tabindex"
         :disabled="disabled"
         :value="value"
       />
-      <div class="bx-radio--icon"></div>
+      <div class="bx-radio__icon"></div>
     </div>
-    <label v-if="label" :for="id" class="bx-radio--label">{{ label }}</label>
+
+    <label v-if="label" :for="id" class="bx-radio__label">{{ label }}</label>
   </div>
 </template>
 
@@ -59,7 +60,7 @@ const radioClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-radio--disabled')
+    classes.push('disabled')
   }
 
   return classes.join(', ')

@@ -2,38 +2,35 @@
   height: 24px;
   position: relative;
 
-  .bx-slider--track {
-    @extend .bg-gray-2;
-
+  &__track {
     position: absolute;
     top: 50%;
     width: 100%;
     transform: translateY(-50%);
     height: 4px;
+    background-color: rgba($gray, 0.2);
     border-radius: 2px;
     cursor: pointer;
   }
 
-  .bx-slider--active-track {
-    @extend .bg-blue;
-
+  &__active-track {
     position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
     height: 4px;
+    background-color: $blue;
     border-radius: 2px;
     cursor: pointer;
   }
 
-  .bx-slider--control {
-    @extend .bg-blue;
-
+  &__control {
     position: absolute;
     top: 50%;
     width: 20px;
     height: 20px;
     transform: translate(-50%, -50%);
+    background-color: $blue;
     border-radius: 50%;
     cursor: pointer;
     user-select: none;
@@ -43,31 +40,31 @@
 
       &:after {
         content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
+        @include absolute_center;
         width: 40px;
         height: 40px;
+        background-color: rgba($blue, 0.1);
         border-radius: 50%;
-        transform: translate(-50%, -50%);
         z-index: -1;
-
-        @extend .bg-blue-1;
       }
     }
   }
 
-  &.bx-slider--disabled {
-    .bx-slider--active-track {
-      @extend .bg-gray;
-    }
+  &.disabled &__track {
+    cursor: default;
+  }
 
-    .bx-slider--control {
-      @extend .bg-gray;
+  &.disabled &__active-track {
+    background-color: $gray;
+    cursor: default;
+  }
 
-      &:focus:after {
-        display: none;
-      }
+  &.disabled &__control {
+    background-color: $gray;
+    cursor: default;
+
+    &:focus::after {
+      display: none;
     }
   }
 }

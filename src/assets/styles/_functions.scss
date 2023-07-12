@@ -1,3 +1,15 @@
-@function multiple($unit, $i) {
-  @return $unit * $i;
+@function spacing($value) {
+  @return $unit * $value;
+}
+
+@function border($color, $width: 1px, $style: solid) {
+  @return $width $style $color;
+}
+
+@function outline($color, $width: 1px, $style: solid) {
+  @return $width $style $color;
+}
+
+@function shadow($color: $gray) {
+  @return 0 0 10px $color;
 }

@@ -1,11 +1,96 @@
-@mixin generate_property($property, $value) {
-  #{$property}: $value;
+// UTIL CLASSES
+@mixin spacing_classes($list) {
+  @for $i from 0 through 10 {
+    @each $prefix, $properties in $list {
+      .#{$prefix}-#{$i} {
+        @each $property in $properties {
+          #{$property}: spacing($i);
+        }
+      }
+    }
+  }
 }
 
-// @mixin generate_box_shadow($i, $color) {
-//   $x: 0;
-//   $y: 0;
-//   $radius: multiple($unit, $i);
+@mixin spacing_classes_with_specific_value($list, $value) {
+  @each $prefix, $properties in $list {
+    .#{$prefix} {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+  }
+}
 
-//   @include generate_property(box-shadow, $x $y $radius $color);
-// }
+@mixin color_classes($colors, $color_properties) {
+  @each $colorName, $colorValue in $colors {
+    @each $prefix, $properties in $color_properties {
+      .#{$prefix}-#{$colorName} {
+        @each $property in $properties {
+          #{$property}: $colorValue;
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through 9 {
+    @each $colorName, $colorValue in $colors {
+      @each $prefix, $properties in $color_properties {
+        .#{$prefix}-#{$colorName}-#{$i} {
+          @each $property in $properties {
+            #{$property}: rgba($colorValue, 0.1 * $i);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin outline_classes($colors) {
+  @each $colorName, $colorValue in $colors {
+    .outline-#{$colorName} {
+      outline: solid $colorValue;
+    }
+  }
+
+  .outline-0,
+  .outline-none {
+    outline: none;
+  }
+}
+
+@mixin shadow_classes($colors) {
+  @each $color, $value in $colors {
+    .shadow-#{$color} {
+      box-shadow: 0 0 10px $value;
+    }
+  }
+
+  .shadow {
+    box-shadow: 0 0 10px $gray;
+  }
+}
+
+@mixin text_ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin disabled() {
+  background-color: rgba($gray, 0.1);
+  color: $gray;
+  cursor: default;
+}
+
+@mixin flex_center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absolute_center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,7 +1,7 @@
 // fade
 .fade-enter-from,
 .fade-leave-to {
-  transition: all 0.1s ease-in-out;
+  transition: top 0.1s ease-in-out;
   position: relative;
   top: -15px;
   z-index: -1;
@@ -9,7 +9,7 @@
 
 .fade-enter-to,
 .fade-leave-from {
-  transition: all 0.1s ease-in-out;
+  transition: top 0.1s ease-in-out;
   position: relative;
   top: 0;
   z-index: -1;

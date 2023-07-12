@@ -3,12 +3,13 @@
     <input
       v-model="modelValue"
       type="text"
-      class="bx-input--control"
+      class="bx-input__control"
       :placeholder="placeholder"
       :disabled="disabled"
     />
+
     <Transition name="fade">
-      <div v-if="errorMessage" class="bx-input--error">{{ errorMessage }}</div>
+      <div v-if="errorMessage" class="bx-input__error">{{ errorMessage }}</div>
     </Transition>
   </div>
 </template>
@@ -43,7 +44,7 @@ const inputClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-input--disabled')
+    classes.push('disabled')
   }
 
   if (props.errorMessage) {
