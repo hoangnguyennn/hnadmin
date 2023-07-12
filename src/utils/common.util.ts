@@ -31,3 +31,8 @@ export default class CommonUtil {
     return props.every((key: any) => CommonUtil.deepEqual(a[key], b[key]))
   }
 }
+
+let _uid = 0
+export const getUid = () => {
+  return ++_uid
+}
