@@ -7,6 +7,7 @@ $gray: #909399;
 $white: #ffffff;
 
 $hover-opacity: 0.8;
+$disabled-opacity: 0.5;
 
 $unit: 2px;
 
@@ -17,7 +18,8 @@ $colors: (
   'yellow': $yellow,
   'black': $black,
   'gray': $gray,
-  'white': $white
+  'white': $white,
+  'transparent': transparent
 );
 
 $margins: (

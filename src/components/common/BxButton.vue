@@ -1,5 +1,5 @@
 <template>
-  <button class="bx-button" :class="btnClasses">
+  <button class="bx-button" :class="btnClasses" :disabled="disabled">
     <slot></slot>
   </button>
 </template>
@@ -12,12 +12,14 @@ interface BxButtonProps {
   variant?: ButtonVariant
   outlined?: boolean
   rounded?: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<BxButtonProps>(), {
   variant: 'default',
   outlined: false,
-  rounded: false
+  rounded: false,
+  disabled: false
 })
 
 const variantClass = computed(() => {
@@ -50,6 +52,10 @@ const btnClasses = computed(() => {
 
   if (props.rounded) {
     classes.push('bx-button--rounded')
+  }
+
+  if (props.disabled) {
+    classes.push('bx-button--disabled')
   }
 
   return classes.join(' ')

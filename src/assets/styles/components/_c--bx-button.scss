@@ -1,9 +1,10 @@
 .bx-button {
   @extend .px-10;
   @extend .py-5;
+  @extend .bg-white;
   @extend .text-black;
+  @extend .border-black;
   @extend .border;
-  @extend .border-white;
   @extend .radius-4;
 
   font-size: 1rem;
@@ -13,56 +14,108 @@
   cursor: pointer;
   transition: all 0.1s linear;
 
-  &:hover {
-    @extend .bg-blue-1;
+  &:hover,
+  &:focus {
     @extend .text-blue;
     @extend .border-blue;
   }
 
   &:focus {
-    @extend .bg-blue-1;
-    @extend .text-blue;
     @extend .border-white;
     @extend .outline-blue;
   }
 
-  @each $variant, $value in $variants {
-    &.bx-button--#{$variant} {
-      @extend .text-white;
-      @extend .border-#{$variant};
+  &.bx-button--outlined {
+    @extend .border-black;
 
-      background-color: $value;
+    &:hover,
+    &:focus {
+      @extend .border-blue;
+    }
 
-      &:hover {
-        background-color: rgba($value, $hover-opacity);
-      }
+    &:focus {
+      @extend .border-white;
+    }
 
+    &.bx-button--disabled {
+      &,
+      &:hover,
       &:focus {
-        @extend .outline-#{$variant};
-        background-color: rgba($value, $hover-opacity);
-      }
-
-      &.bx-button--outlined {
-        @extend .bg-#{$variant}-1;
-        @extend .text-#{$variant};
-
-        &:hover {
-          @extend .bg-#{$variant};
-          @extend .text-white;
-          @extend .border-#{$variant};
-        }
-
-        &:focus {
-          @extend .bg-#{$variant};
-          @extend .text-white;
-          @extend .border-white;
-          @extend .outline-#{$variant};
-        }
+        @extend .border-gray-5;
       }
     }
   }
 
   &.bx-button--rounded {
     @extend .rounded;
+  }
+
+  &.bx-button--disabled {
+    &,
+    &:hover,
+    &:focus {
+      @extend .bg-white-5;
+      @extend .text-black-5;
+      @extend .border-black-5;
+
+      cursor: default;
+    }
+  }
+
+  @each $variant, $value in $variants {
+    &.bx-button--#{$variant} {
+      @extend .text-white;
+      @extend .border-#{$variant};
+      @extend .bg-#{$variant};
+
+      &:hover,
+      &:focus {
+        @extend .bg-#{$variant}-8;
+      }
+
+      &:focus {
+        @extend .outline-#{$variant};
+      }
+
+      &.bx-button--disabled {
+        &,
+        &:hover,
+        &:focus {
+          @extend .text-white-5;
+          @extend .border-#{$variant}-5;
+          @extend .bg-#{$variant}-5;
+        }
+      }
+
+      &.bx-button--outlined {
+        @extend .bg-#{$variant}-1;
+        @extend .text-#{$variant};
+        @extend .border-#{$variant};
+
+        &:hover,
+        &:focus {
+          @extend .bg-#{$variant};
+          @extend .text-white;
+        }
+
+        &:hover {
+          @extend .border-#{$variant};
+        }
+
+        &:focus {
+          @extend .border-white;
+        }
+
+        &.bx-button--disabled {
+          &,
+          &:hover,
+          &:focus {
+            @extend .bg-#{$variant}-1;
+            @extend .text-#{$variant}-5;
+            @extend .border-#{$variant}-5;
+          }
+        }
+      }
+    }
   }
 }
