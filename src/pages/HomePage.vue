@@ -5,6 +5,10 @@ import BxButton from '@hn/components/common/BxButton.vue'
 import BxSelect from '@hn/components/common/BxSelect.vue'
 import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
 import BxSwitch from '@hn/components/common/BxSwitch.vue'
+import BxRadio from '@hn/components/common/BxRadio.vue'
+import { ref } from 'vue'
+
+const radio = ref()
 </script>
 
 <template>
@@ -176,6 +180,24 @@ import BxSwitch from '@hn/components/common/BxSwitch.vue'
         <h4>Disabled</h4>
         <bx-switch label="Option 1" disabled />
         <bx-switch label="Option 2" disabled :model-value="true" />
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Radio</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <h4>Default</h4>
+        <bx-radio v-model="radio" name="name" value="Hoang" />
+        <bx-radio v-model="radio" name="name" value="Huy" />
+
+        <h4>With label</h4>
+        <bx-radio name="age" label="Option 1" />
+        <bx-radio name="age" label="Option 2" />
+
+        <h4>Disabled</h4>
+        <bx-radio label="Option 1" disabled />
+        <bx-radio label="Option 2" disabled :model-value="true" />
       </div>
     </div>
   </div>

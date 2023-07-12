@@ -1,15 +1,19 @@
 <template>
-  <div class="bx-switch" :class="switchClasses">
-    <input
-      :id="id"
-      v-model="checked"
-      class="bx-switch--control"
-      type="checkbox"
-      :tabindex="tabindex"
-      :disabled="disabled"
-      :value="value"
-    />
-    <label v-if="label" :for="id" class="bx-switch--label">{{ label }}</label>
+  <div class="bx-radio" :class="radioClasses">
+    <div class="bx-radio--control-wrap">
+      <input
+        :id="id"
+        v-model="checked"
+        class="bx-radio--control"
+        type="radio"
+        :name="name"
+        :tabindex="tabindex"
+        :disabled="disabled"
+        :value="value"
+      />
+      <div class="bx-radio--icon"></div>
+    </div>
+    <label v-if="label" :for="id" class="bx-radio--label">{{ label }}</label>
   </div>
 </template>
 
@@ -25,6 +29,7 @@ interface BxCheckboxProps {
   modelValue?: any
   disabled?: boolean
   tabindex?: number
+  name?: string
 }
 
 const props = withDefaults(defineProps<BxCheckboxProps>(), {
@@ -33,7 +38,8 @@ const props = withDefaults(defineProps<BxCheckboxProps>(), {
   value: undefined,
   modelValue: undefined,
   disabled: false,
-  tabindex: 0
+  tabindex: 0,
+  name: undefined
 })
 
 const emit = defineEmits<{
@@ -41,18 +47,19 @@ const emit = defineEmits<{
 }>()
 
 const uid = getUid()
-const id = computed(() => props.id ?? `switch-${uid}`)
+const id = computed(() => props.id ?? `radio-${uid}`)
+const name = computed(() => props.name ?? `radio-${uid}`)
 
 const checked = computed({
   get: () => props.modelValue,
   set: value => emit('update:model-value', value)
 })
 
-const switchClasses = computed(() => {
+const radioClasses = computed(() => {
   const classes: string[] = []
 
   if (props.disabled) {
-    classes.push('bx-switch--disabled')
+    classes.push('bx-radio--disabled')
   }
 
   return classes.join(', ')
