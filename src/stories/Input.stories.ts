@@ -6,7 +6,12 @@ const meta = {
   title: 'Example/Input',
   component: BxInput,
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    placeholder: { description: 'Hiển thị placeholder cho input' },
+    disabled: { description: 'Nếu `true`, input sẽ không thể tương tác' },
+    errorMessage: { description: 'Hiển thị lỗi của input' },
+    modelValue: { description: 'Giá trị của input' }
+  },
   args: {
     placeholder: 'Please input'
   }

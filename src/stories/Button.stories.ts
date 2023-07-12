@@ -9,8 +9,12 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'blue', 'green', 'red', 'yellow', 'gray']
-    }
+      options: ['default', 'blue', 'green', 'red', 'yellow', 'gray'],
+      description: 'Màu sắc của button'
+    },
+    outlined: { description: 'Nếu `true`, button sẽ hiển thị viền' },
+    rounded: { description: 'Nếu `true`, button sẽ bo tròn góc' },
+    disabled: { description: 'Nếu `true`, button sẽ không thể tương tác' }
   },
   args: {
     default: 'Click me',
