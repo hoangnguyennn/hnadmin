@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import BxInput from '@hn/components/common/BxInput.vue'
+import BxTextarea from '@hn/components/common/BxTextarea.vue'
 
 const input = ref('')
 
@@ -15,27 +15,41 @@ const errorMessage = computed(() => {
 
     <div class="mt-5">
       <h3>Default</h3>
-      <div style="display: flex; gap: 5px">
-        <bx-input placeholder="Please input" />
-      </div>
+
+      <bx-textarea :rows="10" placeholder="Please input" />
     </div>
 
     <div class="mt-5">
       <h3>Disabled</h3>
-      <div style="display: flex; gap: 5px">
-        <bx-input placeholder="Please input" disabled />
-      </div>
+
+      <bx-textarea placeholder="Please input" disabled />
+    </div>
+
+    <div class="mt-5">
+      <h3>Fixed</h3>
+
+      <bx-textarea placeholder="Please input" fixed :rows="7" />
     </div>
 
     <div class="mt-5">
       <h3>Error</h3>
-      <div style="display: flex; gap: 5px">
-        <bx-input
-          v-model="input"
-          placeholder="Please input"
-          :error-message="errorMessage"
-        />
-      </div>
+
+      <bx-textarea
+        v-model="input"
+        placeholder="Please input"
+        :error-message="errorMessage"
+      />
+    </div>
+
+    <div class="mt-5">
+      <h3>Auto size</h3>
+
+      <bx-textarea
+        placeholder="Please input"
+        auto-size
+        :min-rows="2"
+        :max-rows="10"
+      />
     </div>
   </div>
 </template>

@@ -1,0 +1,20 @@
+.bx-textarea {
+  @extend .bx-input;
+
+  .bx-textarea--control {
+    @extend .bx-input--control;
+
+    min-height: 40px;
+    resize: vertical;
+  }
+
+  .bx-textarea--error {
+    @extend .bx-input--error;
+  }
+
+  &.fixed {
+    .bx-textarea--control {
+      resize: none;
+    }
+  }
+}
