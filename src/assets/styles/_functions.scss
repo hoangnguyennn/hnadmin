@@ -1,0 +1,3 @@
+@function multiple($unit, $i) {
+  @return $unit * $i;
+}

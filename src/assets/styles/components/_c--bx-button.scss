@@ -1,0 +1,68 @@
+.bx-button {
+  @extend .px-10;
+  @extend .py-5;
+  @extend .text-black;
+  @extend .border;
+  @extend .border-white;
+  @extend .radius-4;
+
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.1s linear;
+
+  &:hover {
+    @extend .bg-blue-1;
+    @extend .text-blue;
+    @extend .border-blue;
+  }
+
+  &:focus {
+    @extend .bg-blue-1;
+    @extend .text-blue;
+    @extend .border-white;
+    @extend .outline-blue;
+  }
+
+  @each $variant, $value in $variants {
+    &.bx-button--#{$variant} {
+      @extend .text-white;
+      @extend .border-#{$variant};
+
+      background-color: $value;
+
+      &:hover {
+        background-color: rgba($value, $hover-opacity);
+      }
+
+      &:focus {
+        @extend .outline-#{$variant};
+        background-color: rgba($value, $hover-opacity);
+      }
+
+      &.bx-button--outlined {
+        @extend .bg-#{$variant}-1;
+        @extend .text-#{$variant};
+
+        &:hover {
+          @extend .bg-#{$variant};
+          @extend .text-white;
+          @extend .border-#{$variant};
+        }
+
+        &:focus {
+          @extend .bg-#{$variant};
+          @extend .text-white;
+          @extend .border-white;
+          @extend .outline-#{$variant};
+        }
+      }
+    }
+  }
+
+  &.bx-button--rounded {
+    @extend .rounded;
+  }
+}

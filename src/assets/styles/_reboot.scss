@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  border-style: solid;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  @extend .bg-blue-1;
+}
+
+.disabled {
+  @extend .bg-gray-1;
+  @extend .text-gray;
+
+  cursor: default;
+}

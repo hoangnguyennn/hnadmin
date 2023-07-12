@@ -1,0 +1,44 @@
+.border {
+  border-width: 1px;
+}
+
+.rounded {
+  border-radius: 999px;
+}
+
+@for $i from 0 through 10 {
+  .radius-#{$i} {
+    border-radius: multiple($unit, $i);
+  }
+
+  .border-#{$i} {
+    border-width: multiple($unit, $i);
+  }
+
+  // margin
+  @each $prefix, $properties in $margins {
+    .#{$prefix}-#{$i} {
+      @each $property in $properties {
+        @include generate_property($property, multiple($unit, $i));
+      }
+    }
+  }
+
+  // negative margin
+  @each $prefix, $properties in $margins {
+    .#{$prefix}-n#{$i} {
+      @each $property in $properties {
+        @include generate_property($property, multiple(-$unit, $i));
+      }
+    }
+  }
+
+  // padding
+  @each $prefix, $properties in $paddings {
+    .#{$prefix}-#{$i} {
+      @each $property in $properties {
+        @include generate_property($property, multiple($unit, $i));
+      }
+    }
+  }
+}

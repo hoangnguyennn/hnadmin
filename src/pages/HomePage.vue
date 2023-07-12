@@ -1,45 +1,36 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
-import { useAppStore } from '@hn/store/appStore'
-import { ElNotification } from 'element-plus'
-import exampleImage from '@hn/assets/images/example.png'
-
-const appStore = useAppStore()
-const { language } = storeToRefs(appStore)
-const { locale, t } = useI18n()
-
-const changeLanguage = () => {
-  if (language.value === 'en') {
-    locale.value = 'vi'
-    appStore.setLanguage('vi')
-  } else {
-    locale.value = 'en'
-    appStore.setLanguage('en')
-  }
-}
-
-const showNotification = () => {
-  ElNotification({
-    type: 'error',
-    message: 'hello',
-    position: 'bottom-left'
-  })
-}
+import BxButton from '@hn/components/common/BxButton.vue'
 </script>
 
 <template>
   <div>
-    <h2>HomePage</h2>
-    <p>Current language: {{ language }}</p>
-    <button @click="changeLanguage">Change language</button>
+    <h2 class="disabled">HomePage</h2>
 
-    <p>{{ t('hello') }}</p>
+    <div style="display: flex; gap: 5px">
+      <bx-button>Click me</bx-button>
+      <bx-button variant="blue">Click me</bx-button>
+      <bx-button variant="red">Click me</bx-button>
+      <bx-button variant="green">Click me</bx-button>
+      <bx-button variant="yellow">Click me</bx-button>
+      <bx-button variant="gray">Click me</bx-button>
+    </div>
 
-    <el-button type="primary" @click="showNotification">
-      Show notification
-    </el-button>
+    <div style="display: flex; gap: 5px" class="mt-5">
+      <bx-button outlined>Click me</bx-button>
+      <bx-button outlined variant="blue">Click me</bx-button>
+      <bx-button outlined variant="red">Click me</bx-button>
+      <bx-button outlined variant="green">Click me</bx-button>
+      <bx-button outlined variant="yellow">Click me</bx-button>
+      <bx-button outlined variant="gray">Click me</bx-button>
+    </div>
 
-    <img :src="exampleImage" />
+    <div style="display: flex; gap: 5px" class="mt-5">
+      <bx-button rounded>Click me</bx-button>
+      <bx-button rounded variant="blue">Click me</bx-button>
+      <bx-button rounded variant="red">Click me</bx-button>
+      <bx-button rounded variant="green">Click me</bx-button>
+      <bx-button rounded variant="yellow">Click me</bx-button>
+      <bx-button rounded variant="gray">Click me</bx-button>
+    </div>
   </div>
 </template>

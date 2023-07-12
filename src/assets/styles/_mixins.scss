@@ -1,0 +1,11 @@
+@mixin generate_property($property, $value) {
+  #{$property}: $value;
+}
+
+// @mixin generate_box_shadow($i, $color) {
+//   $x: 0;
+//   $y: 0;
+//   $radius: multiple($unit, $i);
+
+//   @include generate_property(box-shadow, $x $y $radius $color);
+// }

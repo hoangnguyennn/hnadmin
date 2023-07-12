@@ -1,11 +1,12 @@
-import GenerateUtil from '@hn/utils/generate.util'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { ISnackbar, ISnackbarOption } from '@hn/types/store'
+import GenerateUtil from '@hn/utils/generate.util'
 
 export const useAppStore = defineStore('appStore', () => {
   const isLoading = ref(false)
   const language = ref('en')
-  const snackbars = ref<Types.ISnackbar[]>([])
+  const snackbars = ref<ISnackbar[]>([])
 
   const setIsLoading = (value: boolean) => {
     isLoading.value = value
@@ -15,16 +16,16 @@ export const useAppStore = defineStore('appStore', () => {
     language.value = value
   }
 
-  const addSnackbar = (snackbar: Types.ISnackbarOption | string) => {
+  const addSnackbar = (snackbar: ISnackbarOption | string) => {
     if (typeof snackbar === 'object') {
-      const newSnackbar: Types.ISnackbar = {
+      const newSnackbar: ISnackbar = {
         ...snackbar,
         id: GenerateUtil.generateId()
       }
 
       snackbars.value.push(newSnackbar)
     } else {
-      const newSnackbar: Types.ISnackbar = {
+      const newSnackbar: ISnackbar = {
         id: GenerateUtil.generateId(),
         message: snackbar
       }
