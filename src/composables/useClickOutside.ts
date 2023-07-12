@@ -1,5 +1,6 @@
 import { Ref, onBeforeUnmount, onMounted } from 'vue'
 
+// xử lý sự kiện click bên ngoài element
 const useClickOutside = (
   elementRef: Ref<HTMLElement | undefined> | Ref<HTMLElement | undefined>[],
   callback: (event: MouseEvent) => void

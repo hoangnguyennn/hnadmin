@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import BxInput from '@hn/components/common/BxInput.vue'
 import BxTextarea from '@hn/components/common/BxTextarea.vue'
 import BxButton from '@hn/components/common/BxButton.vue'
@@ -6,9 +8,11 @@ import BxSelect from '@hn/components/common/BxSelect.vue'
 import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
 import BxSwitch from '@hn/components/common/BxSwitch.vue'
 import BxRadio from '@hn/components/common/BxRadio.vue'
-import { ref } from 'vue'
+import BxSlider from '@hn/components/common/BxSlider.vue'
 
 const radio = ref()
+const slider = ref(50)
+const slider2 = ref(50)
 </script>
 
 <template>
@@ -198,6 +202,16 @@ const radio = ref()
         <h4>Disabled</h4>
         <bx-radio label="Option 1" disabled />
         <bx-radio label="Option 2" disabled :model-value="true" />
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Slider</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-slider v-model="slider" />
+
+        <bx-slider v-model="slider2" disabled />
       </div>
     </div>
   </div>

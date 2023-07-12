@@ -1,6 +1,7 @@
 import { BOUNDING_SIZE, DROPDOWN_SPACING_WITH_PARENT } from '@hn/constants'
 import { Ref, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
+// trả về vị trí tuyệt đối của dropdown trên viewport dựa theo parent
 const useDropdownPosition = (
   parentElementRef: Ref<HTMLElement | undefined>,
   dropdownElementRef: Ref<HTMLElement | undefined>
@@ -22,13 +23,11 @@ const useDropdownPosition = (
 
       const viewportHeight = window.innerHeight
 
-      if (dropdownBottom > viewportHeight - BOUNDING_SIZE) {
+      if (dropdownBottom > viewportHeight) {
         // show dropdown on top of the parent element
         if (parentElementRect.top > viewportHeight) {
           dropdownTop =
-            viewportHeight -
-            DROPDOWN_SPACING_WITH_PARENT -
-            dropdownElementRect.height
+            viewportHeight - BOUNDING_SIZE - dropdownElementRect.height
         } else {
           dropdownTop =
             parentElementRect.top -
