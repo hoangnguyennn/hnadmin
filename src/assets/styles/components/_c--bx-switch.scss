@@ -1,0 +1,97 @@
+.bx-switch {
+  display: flex;
+  align-items: center;
+
+  .bx-switch--control {
+    appearance: none;
+    width: 44px;
+    height: 18px;
+    border-radius: 999px;
+    box-shadow: inset 0 2px 4px rgba($black, 0.25),
+      inset 0 -2px 4px rgba($black, 0.25);
+
+    transition: all 0.1s linear;
+    cursor: pointer;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: 50%;
+      left: -3px;
+      transform: translateY(-50%);
+      box-shadow: 0 0 10px rgba($black, 0.25);
+      cursor: pointer;
+      transition: all 0.1s linear;
+      z-index: 2;
+
+      @extend .bg-white;
+      @extend .rounded;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      left: -11px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: all 0.1s linear;
+      display: none;
+
+      @extend .bg-blue-1;
+      @extend .rounded;
+    }
+
+    &:checked {
+      @extend .bg-blue;
+
+      &:before {
+        left: calc(100% + 3px - 24px);
+      }
+
+      &:after {
+        left: calc(100% + 11px - 40px);
+      }
+    }
+
+    &:focus {
+      outline: none;
+
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  .bx-switch--label {
+    margin-left: 11px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &.bx-switch--disabled {
+    cursor: default;
+    @extend .text-gray;
+
+    .bx-switch--control {
+      @extend .bg-gray-1;
+      box-shadow: none;
+      cursor: default;
+
+      &:before {
+        @extend .bg-gray;
+        box-shadow: none;
+        cursor: default;
+      }
+    }
+
+    .bx-switch--label {
+      cursor: default;
+    }
+  }
+}
