@@ -1,0 +1,54 @@
+.bx-input {
+  display: flex;
+  flex-direction: column;
+
+  .bx-input--control {
+    @extend .p-5;
+    @extend .bg-white;
+    @extend .text-black;
+    @extend .border-1;
+    @extend .border-transparent;
+    @extend .radius-4;
+
+    width: 100%;
+    font-size: 1rem;
+    transition: all 0.1s linear;
+
+    &:focus {
+      @extend .outline-0;
+      @extend .border-blue;
+      @extend .shadow-blue;
+    }
+
+    &::placeholder {
+      @extend .text-gray;
+    }
+  }
+
+  &.bx-input--disabled {
+    .bx-input--control {
+      @extend .bg-gray-1;
+      @extend .text-gray;
+    }
+  }
+
+  .bx-input--error {
+    @extend .mt-2;
+    @extend .px-5;
+    @extend .text-red;
+
+    font-size: 12px;
+  }
+
+  &.error {
+    .bx-input--control {
+      @extend .border-red;
+      @extend .bg-red-2;
+
+      &:focus {
+        @extend .outline-0;
+        @extend .shadow-red;
+      }
+    }
+  }
+}

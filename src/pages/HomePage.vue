@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import BxButton from '@hn/components/common/BxButton.vue'
+import { computed, ref } from 'vue'
+import BxInput from '@hn/components/common/BxInput.vue'
+
+const input = ref('')
+
+const errorMessage = computed(() => {
+  return input.value ? '' : 'The input is required'
+})
 </script>
 
 <template>
@@ -9,60 +16,25 @@ import BxButton from '@hn/components/common/BxButton.vue'
     <div class="mt-5">
       <h3>Default</h3>
       <div style="display: flex; gap: 5px">
-        <bx-button>Click me</bx-button>
-        <bx-button variant="blue">Click me</bx-button>
-        <bx-button variant="red">Click me</bx-button>
-        <bx-button variant="green">Click me</bx-button>
-        <bx-button variant="yellow">Click me</bx-button>
-        <bx-button variant="gray">Click me</bx-button>
-      </div>
-    </div>
-
-    <div class="mt-5">
-      <h3>Outlined</h3>
-      <div style="display: flex; gap: 5px">
-        <bx-button outlined>Click me</bx-button>
-        <bx-button outlined variant="blue">Click me</bx-button>
-        <bx-button outlined variant="red">Click me</bx-button>
-        <bx-button outlined variant="green">Click me</bx-button>
-        <bx-button outlined variant="yellow">Click me</bx-button>
-        <bx-button outlined variant="gray">Click me</bx-button>
-      </div>
-    </div>
-
-    <div class="mt-5">
-      <h3>Rounded</h3>
-      <div style="display: flex; gap: 5px">
-        <bx-button rounded>Click me</bx-button>
-        <bx-button rounded variant="blue">Click me</bx-button>
-        <bx-button rounded variant="red">Click me</bx-button>
-        <bx-button rounded variant="green">Click me</bx-button>
-        <bx-button rounded variant="yellow">Click me</bx-button>
-        <bx-button rounded variant="gray">Click me</bx-button>
+        <bx-input placeholder="Please input" />
       </div>
     </div>
 
     <div class="mt-5">
       <h3>Disabled</h3>
       <div style="display: flex; gap: 5px">
-        <bx-button disabled>Click me</bx-button>
-        <bx-button disabled variant="blue">Click me</bx-button>
-        <bx-button disabled variant="red">Click me</bx-button>
-        <bx-button disabled variant="green">Click me</bx-button>
-        <bx-button disabled variant="yellow">Click me</bx-button>
-        <bx-button disabled variant="gray">Click me</bx-button>
+        <bx-input placeholder="Please input" disabled />
       </div>
     </div>
 
     <div class="mt-5">
-      <h3>Disabled and outlined</h3>
+      <h3>Error</h3>
       <div style="display: flex; gap: 5px">
-        <bx-button disabled outlined>Click me</bx-button>
-        <bx-button disabled outlined variant="blue">Click me</bx-button>
-        <bx-button disabled outlined variant="red">Click me</bx-button>
-        <bx-button disabled outlined variant="green">Click me</bx-button>
-        <bx-button disabled outlined variant="yellow">Click me</bx-button>
-        <bx-button disabled outlined variant="gray">Click me</bx-button>
+        <bx-input
+          v-model="input"
+          placeholder="Please input"
+          :error-message="errorMessage"
+        />
       </div>
     </div>
   </div>

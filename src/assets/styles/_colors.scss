@@ -9,6 +9,7 @@
   }
 
   .border-#{$color} {
+    border-style: solid;
     border-color: $value;
   }
 }
@@ -25,14 +26,25 @@
     }
 
     .border-#{$color}-#{$i} {
+      border-style: solid;
       border-color: rgba($value, multiple($i, 0.1));
     }
   }
 }
 
 // outline
+.outline-0 {
+  outline: none;
+}
+
 @each $variant, $value in $variants {
   .outline-#{$variant} {
     outline: solid $value;
+  }
+}
+
+@each $variant, $value in $variants {
+  .shadow-#{$variant} {
+    box-shadow: 0 0 10px $value;
   }
 }

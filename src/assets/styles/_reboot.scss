@@ -2,10 +2,14 @@
 *::before,
 *::after {
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+  line-height: 1.25;
+
+  @extend .bg-gray-1;
 }
 
 button {
