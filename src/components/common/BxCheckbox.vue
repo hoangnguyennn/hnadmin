@@ -6,6 +6,7 @@
         v-model="checked"
         class="bx-checkbox--control"
         type="checkbox"
+        :tabindex="tabindex"
         :disabled="disabled"
         :value="value"
       />
@@ -26,6 +27,7 @@ interface BxCheckboxProps {
   value?: any
   modelValue?: any
   disabled?: boolean
+  tabindex?: number
 }
 
 const props = withDefaults(defineProps<BxCheckboxProps>(), {
@@ -33,7 +35,8 @@ const props = withDefaults(defineProps<BxCheckboxProps>(), {
   label: undefined,
   value: undefined,
   modelValue: undefined,
-  disabled: false
+  disabled: false,
+  tabindex: 0
 })
 
 const emit = defineEmits<{

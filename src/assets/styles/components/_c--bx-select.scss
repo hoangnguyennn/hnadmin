@@ -97,13 +97,23 @@
   z-index: 999;
 
   .bx-select--item {
-    @extend .p-5;
+    &:not(.multiple) {
+      @extend .p-5;
+    }
+
     @extend .radius-4;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     &.selected,
     &:hover {

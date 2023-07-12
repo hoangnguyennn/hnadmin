@@ -32,6 +32,12 @@
           :class="getItemClasses(item)"
           @click="onSelect(item)"
         >
+          <bx-checkbox
+            v-if="multiple"
+            :model-value="isSelectedItem(item)"
+            :tabindex="-1"
+            :disabled="isDisabledItem(item)"
+          />
           <span>{{ getItemTitle(item) }}</span>
         </div>
       </div>
@@ -44,7 +50,8 @@
 import useClickOutside from '@hn/composables/useClickOutside'
 import useDropdownPosition from '@hn/composables/useDropdownPosition'
 import CommonUtil from '@hn/utils/common.util'
-import { StyleValue, computed, ref, watch } from 'vue'
+import BxCheckbox from './BxCheckbox.vue'
+import { StyleValue, computed, ref, shallowRef, watch } from 'vue'
 
 interface BxSelectProps {
   placeholder?: string
@@ -81,7 +88,7 @@ const emit = defineEmits<{
 }>()
 
 const isOpen = ref(false)
-const selections = ref<any[]>([])
+const selections = shallowRef<any[]>([])
 
 const bxSelectRef = ref<HTMLDivElement>()
 const bxSelectPlaceholderRef = ref<HTMLDivElement>()
@@ -201,6 +208,10 @@ const getItemClasses = (item: any) => {
     classes.push('selected')
   }
 
+  if (props.multiple) {
+    classes.push('multiple')
+  }
+
   return classes.join(' ')
 }
 
@@ -225,11 +236,11 @@ const onSelect = (item: any) => {
     return
   }
 
-  if (selections.value.includes(item)) {
+  if (selections.value.some(s => s === item)) {
     selections.value = selections.value.filter(s => s !== item)
   } else {
     if (props.multiple) {
-      selections.value.push(item)
+      selections.value = [...selections.value, item]
     } else {
       selections.value = [item]
     }
@@ -237,9 +248,9 @@ const onSelect = (item: any) => {
 
   if (!props.multiple && props.closeOnSelect) {
     isOpen.value = false
-    bxSelectRef.value?.focus()
   }
 
+  bxSelectRef.value?.focus()
   emitModelValue()
 }
 

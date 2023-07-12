@@ -3,8 +3,8 @@
   align-items: center;
 
   .bx-checkbox--control-wrap {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 
     display: flex;
     justify-content: center;
@@ -18,8 +18,8 @@
       @extend .radius-2;
 
       appearance: none;
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
       cursor: pointer;
 
       position: relative;
@@ -39,19 +39,19 @@
     .bx-checkbox--control:checked {
       + .bx-checkbox--icon {
         @extend .bg-blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &:before {
           content: '';
-          position: absolute;
-          top: calc(50% - 3px);
-          left: calc(50% + 1px);
-          transform: translate(-50%, -50%) rotate(-45deg);
-          width: 14px;
-          height: 7px;
+          margin-bottom: 2px;
+          transform: rotate(-45deg);
+          width: 8px;
+          height: 4px;
 
-          border: 3px solid transparent;
-          border-bottom-color: $white;
-          border-left-color: $white;
+          border-bottom: 2px solid $white;
+          border-left: 2px solid $white;
         }
       }
     }
@@ -62,12 +62,12 @@
       + .bx-checkbox--icon:after {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 50px;
-        height: 50px;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        transform: translate(-15px, -15px);
+        transform: translate(-50%, -50%);
         z-index: -1;
 
         @extend .bg-blue-1;
@@ -84,6 +84,8 @@
     @extend .text-gray;
 
     .bx-checkbox--control {
+      cursor: default;
+
       &:checked + .bx-checkbox--icon {
         @extend .bg-gray;
       }
@@ -91,6 +93,10 @@
 
     .bx-checkbox--icon {
       @extend .border-gray;
+    }
+
+    .bx-checkbox--label {
+      cursor: default;
     }
   }
 }
