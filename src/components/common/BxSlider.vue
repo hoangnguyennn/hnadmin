@@ -1,8 +1,12 @@
 <template>
   <div ref="bxSliderRef" class="bx-slider" :class="sliderClasses">
-    <div class="bx-slider__track"></div>
+    <div ref="bxSliderTrackRef" class="bx-slider__track"></div>
 
-    <div class="bx-slider__active-track" :style="activeTrackStyles"></div>
+    <div
+      ref="bxSliderActiveTrackRef"
+      class="bx-slider__active-track"
+      :style="activeTrackStyles"
+    ></div>
 
     <div
       ref="bxSliderControlRef"
@@ -15,8 +19,15 @@
 
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
-import { StyleValue, computed, ref, watch } from 'vue'
-import useTrack from '@hn/composables/useTrack'
+import {
+  StyleValue,
+  computed,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch
+} from 'vue'
+import useDrag from '@hn/composables/useDrag'
 
 interface BxSliderProps {
   direction?: 'vertical' | 'horizontal'
@@ -41,20 +52,24 @@ const emit = defineEmits<{
 }>()
 
 const bxSliderRef = ref<HTMLDivElement>()
+const bxSliderTrackRef = ref<HTMLDivElement>()
+const bxSliderActiveTrackRef = ref<HTMLDivElement>()
 const bxSliderControlRef = ref<HTMLDivElement>()
 
-const { percentageX } = useTrack(bxSliderRef, bxSliderControlRef)
+const { x } = useDrag(bxSliderControlRef)
+
+const percentage = ref(0)
 
 const activeTrackStyles = ref<StyleValue>()
 const controllerStyles = ref<StyleValue>()
 
-const percentageXByStep = computed(() => {
+const percentageByStep = computed(() => {
   if (props.step) {
     const standardStep = props.step || 1
-    return Math.round(percentageX.value / standardStep) * standardStep
+    return Math.round(percentage.value / standardStep) * standardStep
   }
 
-  return percentageX.value
+  return percentage.value
 })
 
 const sliderClasses = computed(() => {
@@ -67,7 +82,7 @@ const sliderClasses = computed(() => {
   return classes.join(' ')
 })
 
-const emitValue = (percentage: number) => {
+const valueEmit = (percentage: number) => {
   return ((props.max - props.min) * percentage) / 100 + props.min
 }
 
@@ -83,18 +98,46 @@ const standardPercentage = (percentage: number) => {
   return percentage
 }
 
-const percentageByValue = (value: number) => {
-  const valueFromMin = value - props.min
+const getPercentageByValue = (value: number) => {
+  const valueDiffMin = value - props.min
   const valueRange = props.max - props.min || 1
 
-  return standardPercentage((valueFromMin / valueRange) * 100)
+  return standardPercentage((valueDiffMin / valueRange) * 100)
 }
+
+const getPercentageByCoordinate = (coordinate: number) => {
+  const track = bxSliderTrackRef.value
+
+  if (track) {
+    const trackRect = track.getBoundingClientRect()
+    const trackStart = trackRect.left
+    const trackEnd = trackRect.right
+
+    const mousePositionWithTrackStart = coordinate - trackStart
+    const trackLength = trackEnd - trackStart
+
+    const percentage = (mousePositionWithTrackStart / trackLength) * 100
+    return standardPercentage(percentage)
+  }
+
+  return 0
+}
+
+const onTrackClick = (event: MouseEvent) => {
+  percentage.value = getPercentageByCoordinate(event.pageX)
+}
+
+watch(x, newX => {
+  if (!props.disabled) {
+    percentage.value = getPercentageByCoordinate(newX)
+  }
+})
 
 watch(
   () => props.modelValue,
   newPropModelValue => {
-    if (newPropModelValue && newPropModelValue !== percentageX.value) {
-      const percentage = percentageByValue(newPropModelValue)
+    if (newPropModelValue && newPropModelValue !== percentage.value) {
+      const percentage = getPercentageByValue(newPropModelValue)
       activeTrackStyles.value = {
         width: `${percentage}%`
       }
@@ -107,22 +150,48 @@ watch(
   { immediate: true }
 )
 
-watch(percentageXByStep, newPercentageX => {
+watch(percentageByStep, newPercentage => {
   if (props.disabled) {
     return
   }
 
   if (props.direction === 'vertical') {
-    const value = emitValue(Math.round(newPercentageX))
+    const value = valueEmit(Math.round(newPercentage))
     activeTrackStyles.value = {
-      width: `${newPercentageX}%`
+      width: `${newPercentage}%`
     }
 
     controllerStyles.value = {
-      left: `${newPercentageX}%`
+      left: `${newPercentage}%`
     }
 
     emit('update:model-value', value)
+  }
+})
+
+onMounted(() => {
+  const track = bxSliderTrackRef.value
+  const activeTrack = bxSliderActiveTrackRef.value
+
+  if (track) {
+    track.addEventListener('click', onTrackClick)
+  }
+
+  if (activeTrack) {
+    activeTrack.addEventListener('click', onTrackClick)
+  }
+})
+
+onBeforeUnmount(() => {
+  const track = bxSliderTrackRef.value
+  const activeTrack = bxSliderActiveTrackRef.value
+
+  if (track) {
+    track.removeEventListener('click', onTrackClick)
+  }
+
+  if (activeTrack) {
+    activeTrack.removeEventListener('click', onTrackClick)
   }
 })
 </script>

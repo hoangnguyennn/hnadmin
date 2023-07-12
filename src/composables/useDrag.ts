@@ -6,11 +6,11 @@ const useDrag = (elementRef: Ref<HTMLElement | undefined>) => {
   const x = ref(0)
   const y = ref(0)
 
-  const handleMouseDown = () => {
+  const onMouseDown = () => {
     isMouseDown.value = true
   }
 
-  const handleMouseMove = (event: MouseEvent) => {
+  const onMouseMove = (event: MouseEvent) => {
     if (!isMouseDown.value) {
       return
     }
@@ -19,7 +19,7 @@ const useDrag = (elementRef: Ref<HTMLElement | undefined>) => {
     y.value = event.pageY
   }
 
-  const handleMouseUp = () => {
+  const onMouseUp = () => {
     isMouseDown.value = false
   }
 
@@ -27,9 +27,9 @@ const useDrag = (elementRef: Ref<HTMLElement | undefined>) => {
     const element = elementRef.value
 
     if (element) {
-      element.addEventListener('mousedown', handleMouseDown)
-      document.addEventListener('mousemove', handleMouseMove)
-      document.addEventListener('mouseup', handleMouseUp)
+      element.addEventListener('mousedown', onMouseDown)
+      document.addEventListener('mousemove', onMouseMove)
+      document.addEventListener('mouseup', onMouseUp)
     }
   })
 
@@ -37,9 +37,9 @@ const useDrag = (elementRef: Ref<HTMLElement | undefined>) => {
     const element = elementRef.value
 
     if (element) {
-      element.removeEventListener('mousedown', handleMouseDown)
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseup', handleMouseUp)
+      element.removeEventListener('mousedown', onMouseDown)
+      document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mouseup', onMouseUp)
     }
   })
 

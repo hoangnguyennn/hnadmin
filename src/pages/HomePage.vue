@@ -9,10 +9,12 @@ import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
 import BxSwitch from '@hn/components/common/BxSwitch.vue'
 import BxRadio from '@hn/components/common/BxRadio.vue'
 import BxSlider from '@hn/components/common/BxSlider.vue'
+import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
 
 const radio = ref()
 const slider = ref(50)
 const slider2 = ref(50)
+const rangeSlider = ref<[number, number]>([20, 60])
 </script>
 
 <template>
@@ -222,6 +224,16 @@ const slider2 = ref(50)
         <bx-slider v-model="slider" />
 
         <bx-slider v-model="slider2" disabled />
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Range slider</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-range-slider v-model="rangeSlider" />
+
+        <bx-range-slider v-model="rangeSlider" disabled />
       </div>
     </div>
   </div>

@@ -32,17 +32,17 @@
 
     &:focus {
       outline: none;
-
-      + &__icon:after {
-        @include absolute_center;
-        content: '';
-        width: 40px;
-        height: 40px;
-        background-color: rgba($blue, 0.1);
-        border-radius: 50%;
-        z-index: -1;
-      }
     }
+  }
+
+  &__control:focus + &__icon:after {
+    @include absolute_center;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-color: rgba($blue, 0.1);
+    border-radius: 50%;
+    z-index: -1;
   }
 
   &__control:checked + &__icon {
