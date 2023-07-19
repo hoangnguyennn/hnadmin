@@ -21,7 +21,7 @@ interface BxButtonProps {
 }
 
 const props = withDefaults(defineProps<BxButtonProps>(), {
-  variant: 'default',
+  variant: 'blue',
   outlined: false,
   rounded: false,
   disabled: false
