@@ -54,7 +54,8 @@
 
       &:hover,
       &:focus {
-        background-color: rgba($color, 0.8);
+        background-color: rgba($color, $hover_opacity);
+        border-color: rgba($color, $hover_opacity);
       }
 
       &:focus {
@@ -66,6 +67,17 @@
         background-color: rgba($color, 0.1);
         color: $color;
         border-color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: $color;
+          color: $white;
+        }
+
+        &:focus {
+          border-color: $white;
+          outline: outline($color);
+        }
 
         &.disabled,
         &.disabled:hover,

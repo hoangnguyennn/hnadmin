@@ -1,5 +1,10 @@
 <template>
-  <button class="bx-button" :class="btnClasses" :disabled="disabled">
+  <button
+    class="bx-button"
+    :class="btnClasses"
+    :disabled="disabled"
+    @click="$emit('click', $event)"
+  >
     <slot></slot>
   </button>
 </template>
@@ -16,11 +21,15 @@ interface BxButtonProps {
 }
 
 const props = withDefaults(defineProps<BxButtonProps>(), {
-  variant: 'default',
+  variant: 'blue',
   outlined: false,
   rounded: false,
   disabled: false
 })
+
+defineEmits<{
+  (event: 'click', value: PointerEvent): void
+}>()
 
 const variantClass = computed(() => {
   switch (props.variant) {

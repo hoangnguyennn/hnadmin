@@ -67,7 +67,6 @@ const rangeSlider = ref<[number, number]>([20, 60])
       <div style="display: flex; flex-direction: column; gap: 20px">
         <h4>Default</h4>
         <div style="display: flex; gap: 10px">
-          <bx-button>Click me</bx-button>
           <bx-button variant="blue">Click me</bx-button>
           <bx-button variant="green">Click me</bx-button>
           <bx-button variant="red">Click me</bx-button>
@@ -77,7 +76,6 @@ const rangeSlider = ref<[number, number]>([20, 60])
 
         <h4>Outlined</h4>
         <div style="display: flex; gap: 10px">
-          <bx-button outlined>Click me</bx-button>
           <bx-button outlined variant="blue">Click me</bx-button>
           <bx-button outlined variant="green">Click me</bx-button>
           <bx-button outlined variant="red">Click me</bx-button>
@@ -87,7 +85,6 @@ const rangeSlider = ref<[number, number]>([20, 60])
 
         <h4>Rounded</h4>
         <div style="display: flex; gap: 10px">
-          <bx-button rounded>Click me</bx-button>
           <bx-button rounded variant="blue">Click me</bx-button>
           <bx-button rounded variant="green">Click me</bx-button>
           <bx-button rounded variant="red">Click me</bx-button>
@@ -97,7 +94,6 @@ const rangeSlider = ref<[number, number]>([20, 60])
 
         <h4>Disabled</h4>
         <div style="display: flex; gap: 10px">
-          <bx-button disabled>Click me</bx-button>
           <bx-button disabled variant="blue">Click me</bx-button>
           <bx-button disabled variant="green">Click me</bx-button>
           <bx-button disabled variant="red">Click me</bx-button>
@@ -107,7 +103,6 @@ const rangeSlider = ref<[number, number]>([20, 60])
 
         <h4>Disabled + outlined</h4>
         <div style="display: flex; gap: 10px">
-          <bx-button disabled outlined>Click me</bx-button>
           <bx-button disabled outlined variant="blue">Click me</bx-button>
           <bx-button disabled outlined variant="green">Click me</bx-button>
           <bx-button disabled outlined variant="red">Click me</bx-button>
