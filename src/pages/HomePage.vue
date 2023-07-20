@@ -10,6 +10,7 @@ import BxSwitch from '@hn/components/common/BxSwitch.vue'
 import BxRadio from '@hn/components/common/BxRadio.vue'
 import BxSlider from '@hn/components/common/BxSlider.vue'
 import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
+import BxAccordion from '@hn/components/common/BxAccordion.vue'
 
 const radio = ref()
 const slider = ref(50)
@@ -216,6 +217,7 @@ const rangeSlider = ref<[number, number]>([20, 60])
       <h2>Slider</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
+        <p>{{ slider }}</p>
         <bx-slider v-model="slider" />
 
         <bx-slider v-model="slider2" disabled />
@@ -226,9 +228,23 @@ const rangeSlider = ref<[number, number]>([20, 60])
       <h2>Range slider</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
+        <p>{{ rangeSlider }}</p>
         <bx-range-slider v-model="rangeSlider" />
 
         <bx-range-slider v-model="rangeSlider" disabled />
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Accordion</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-accordion title="Section">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </bx-accordion>
       </div>
     </div>
   </div>
