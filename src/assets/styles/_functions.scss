@@ -1,5 +1,5 @@
 @function spacing($value) {
-  @return $unit * $value;
+  @return calc($unit * $value);
 }
 
 @function border($color, $width: 1px, $style: solid) {

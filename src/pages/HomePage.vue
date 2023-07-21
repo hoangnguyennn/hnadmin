@@ -1,25 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
-import BxInput from '@hn/components/common/BxInput.vue'
-import BxTextarea from '@hn/components/common/BxTextarea.vue'
-import BxButton from '@hn/components/common/BxButton.vue'
-import BxSelect from '@hn/components/common/BxSelect.vue'
-import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
-import BxSwitch from '@hn/components/common/BxSwitch.vue'
-import BxRadio from '@hn/components/common/BxRadio.vue'
-import BxSlider from '@hn/components/common/BxSlider.vue'
-import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
+// import BxInput from '@hn/components/common/BxInput.vue'
+// import BxTextarea from '@hn/components/common/BxTextarea.vue'
+// import BxButton from '@hn/components/common/BxButton.vue'
+// import BxSelect from '@hn/components/common/BxSelect.vue'
+// import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
+// import BxSwitch from '@hn/components/common/BxSwitch.vue'
+// import BxRadio from '@hn/components/common/BxRadio.vue'
+// import BxSlider from '@hn/components/common/BxSlider.vue'
+// import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
+import BxAccordion from '@hn/components/common/BxAccordion.vue'
+import BxMenu from '@hn/components/common/BxMenu.vue'
 
-const radio = ref()
-const slider = ref(50)
-const slider2 = ref(50)
-const rangeSlider = ref<[number, number]>([20, 60])
+// const radio = ref()
+// const slider = ref(50)
+// const slider2 = ref(50)
+// const rangeSlider = ref<[number, number]>([20, 60])
 </script>
 
 <template>
   <div class="p-10">
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Input</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -35,9 +37,9 @@ const rangeSlider = ref<[number, number]>([20, 60])
           error-message="The input is required."
         />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Textarea</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -59,9 +61,9 @@ const rangeSlider = ref<[number, number]>([20, 60])
         <h4>Auto size</h4>
         <bx-textarea placeholder="Please input" auto-size />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Button</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -110,9 +112,9 @@ const rangeSlider = ref<[number, number]>([20, 60])
           <bx-button disabled outlined variant="gray">Click me</bx-button>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Select</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -158,9 +160,9 @@ const rangeSlider = ref<[number, number]>([20, 60])
           error-message="The select is required."
         />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Checkbox</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -175,9 +177,9 @@ const rangeSlider = ref<[number, number]>([20, 60])
         <bx-checkbox label="Option 1" disabled />
         <bx-checkbox label="Option 2" disabled :model-value="true" />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Switch</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -192,9 +194,9 @@ const rangeSlider = ref<[number, number]>([20, 60])
         <bx-switch label="Option 1" disabled />
         <bx-switch label="Option 2" disabled :model-value="true" />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Radio</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -210,25 +212,48 @@ const rangeSlider = ref<[number, number]>([20, 60])
         <bx-radio label="Option 1" disabled />
         <bx-radio label="Option 2" disabled :model-value="true" />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Slider</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
+        <p>{{ slider }}</p>
         <bx-slider v-model="slider" />
 
         <bx-slider v-model="slider2" disabled />
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Range slider</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
+        <p>{{ rangeSlider }}</p>
         <bx-range-slider v-model="rangeSlider" />
 
         <bx-range-slider v-model="rangeSlider" disabled />
+      </div>
+    </div> -->
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Accordion</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-accordion title="Section">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </bx-accordion>
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Menu</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-menu></bx-menu>
       </div>
     </div>
   </div>

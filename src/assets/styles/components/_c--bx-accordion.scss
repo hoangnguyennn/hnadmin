@@ -1,0 +1,42 @@
+.bx-accordion {
+  &__title {
+    padding: spacing(5);
+    background-color: $white;
+    transition: border-bottom 0.3s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 2px;
+    width: 6px;
+    height: 6px;
+    border-top: border($black, 2px);
+    border-right: border($black, 2px);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: $white;
+    transition: all 0.3s ease-in-out;
+
+    &--content {
+      padding: spacing(5);
+    }
+  }
+
+  &.show &__icon {
+    transform: rotate(135deg);
+  }
+
+  &.show &__content {
+    margin-top: 1px;
+  }
+}
