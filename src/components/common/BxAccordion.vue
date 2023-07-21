@@ -62,7 +62,7 @@ watch(
     emit('update:model-value', newIsShow)
     const bxAccordionContent = bxAccordionContentRef.value
     if (bxAccordionContent) {
-      if (bxAccordionContent.style.maxHeight) {
+      if (newIsShow) {
         bxAccordionContent.style.maxHeight = ''
       } else {
         bxAccordionContent.style.maxHeight = `${bxAccordionContent.scrollHeight}px`

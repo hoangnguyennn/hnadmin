@@ -1,0 +1,58 @@
+.bx-menu {
+  list-style-type: none;
+  background-color: $white;
+
+  & &__item,
+  & &__link,
+  & &__title {
+    display: block;
+    padding-top: spacing(5);
+    padding-bottom: spacing(5);
+    padding-left: spacing(calc(5 * var(--level)));
+    padding-right: spacing(calc(5 * var(--level)));
+    color: $black;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: rgba($blue, 0.1);
+    }
+  }
+
+  & &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & &__icon {
+    margin-right: 2px;
+    width: 6px;
+    height: 6px;
+    border-top: border($black, 2px);
+    border-right: border($black, 2px);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  & &__item:has(&__link) {
+    padding: 0;
+  }
+
+  & &__item.active,
+  & &__item.active &__link {
+    color: $blue;
+  }
+
+  & &__submenu {
+    & > .bx-menu {
+      max-height: 0px;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  & &__submenu.show &__icon {
+    transform: rotate(135deg);
+  }
+}
