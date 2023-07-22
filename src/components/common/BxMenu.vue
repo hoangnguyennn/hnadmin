@@ -49,7 +49,7 @@
 import { ref, watch } from 'vue'
 import { RouteLocationRaw } from 'vue-router'
 
-export interface BxMenuItem {
+interface BxMenuItem {
   id: string
   title: string
   to?: RouteLocationRaw
@@ -57,45 +57,13 @@ export interface BxMenuItem {
 }
 
 export interface BxMenuProps {
-  items?: BxMenuItem[]
-  active: BxMenuItem['id']
+  items: BxMenuItem[]
+  active?: BxMenuItem['id']
 }
 
 const props = withDefaults(defineProps<BxMenuProps>(), {
-  items: () => [
-    {
-      id: '1',
-      title: 'Navigator 1',
-      childrens: [
-        { id: '1_1', title: 'Item 1' },
-        { id: '1_2', title: 'Item 2' },
-        { id: '1_3', title: 'Item 3', to: '/' }
-      ]
-    },
-    {
-      id: '2',
-      title: 'Navigator 2',
-      childrens: [
-        { id: '2_1', title: 'Item 1' },
-        { id: '2_2', title: 'Item 2' },
-        { id: '2_3', title: 'Item 3', to: '/' }
-      ]
-    },
-    {
-      id: '3',
-      title: 'Navigator 3',
-      childrens: [
-        { id: '3_1', title: 'Item 1' },
-        { id: '3_2', title: 'Item 2' },
-        { id: '3_3', title: 'Item 3', to: '/' }
-      ]
-    },
-    {
-      id: '4',
-      title: 'Navigator 4',
-      to: '/'
-    }
-  ]
+  items: () => [],
+  active: undefined
 })
 
 const emit = defineEmits<{

@@ -11,12 +11,46 @@
 // import BxSlider from '@hn/components/common/BxSlider.vue'
 // import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
 import BxAccordion from '@hn/components/common/BxAccordion.vue'
-import BxMenu from '@hn/components/common/BxMenu.vue'
+import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
 
 // const radio = ref()
 // const slider = ref(50)
 // const slider2 = ref(50)
 // const rangeSlider = ref<[number, number]>([20, 60])
+const items: BxMenuProps['items'] = [
+  {
+    id: '1',
+    title: 'Navigator 1',
+    childrens: [
+      { id: '1_1', title: 'Item 1' },
+      { id: '1_2', title: 'Item 2' },
+      { id: '1_3', title: 'Item 3', to: '/' }
+    ]
+  },
+  {
+    id: '2',
+    title: 'Navigator 2',
+    childrens: [
+      { id: '2_1', title: 'Item 1' },
+      { id: '2_2', title: 'Item 2' },
+      { id: '2_3', title: 'Item 3', to: '/' }
+    ]
+  },
+  {
+    id: '3',
+    title: 'Navigator 3',
+    childrens: [
+      { id: '3_1', title: 'Item 1' },
+      { id: '3_2', title: 'Item 2' },
+      { id: '3_3', title: 'Item 3', to: '/' }
+    ]
+  },
+  {
+    id: '4',
+    title: 'Navigator 4',
+    to: '/'
+  }
+]
 </script>
 
 <template>
@@ -253,7 +287,7 @@ import BxMenu from '@hn/components/common/BxMenu.vue'
       <h2>Menu</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
-        <bx-menu></bx-menu>
+        <bx-menu :items="items"></bx-menu>
       </div>
     </div>
   </div>
