@@ -1,8 +1,5 @@
 .bx-button {
-  padding-left: spacing(10);
-  padding-right: spacing(10);
-  padding-top: spacing(5);
-  padding-bottom: spacing(5);
+  padding: spacing(5) spacing(10);
   background-color: $white;
   font-size: 1rem;
   font-weight: bold;
