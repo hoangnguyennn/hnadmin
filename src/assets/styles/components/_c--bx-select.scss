@@ -14,16 +14,6 @@
     cursor: pointer;
     user-select: none;
 
-    &:focus {
-      outline: outline($blue);
-      border-color: $blue;
-    }
-
-    &::placeholder {
-      font-family: inherit;
-      color: $gray;
-    }
-
     .selection,
     .placeholder {
       min-height: 20px;
@@ -89,10 +79,10 @@
     border-color: $red;
     background-color: rgba($red, 0.2);
     outline: none;
+  }
 
-    &:focus {
-      outline: outline($red);
-    }
+  &.error:focus &__placeholder {
+    outline: outline($red);
   }
 }
 
