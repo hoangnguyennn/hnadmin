@@ -1,0 +1,37 @@
+.bx-badge {
+  padding: spacing(1) spacing(2);
+  background-color: $white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: spacing(4);
+  transition: all 0.1s linear;
+
+  &.dot {
+    padding-left: spacing(1);
+    padding-right: spacing(1);
+  }
+
+  &.rounded {
+    padding: spacing(1) spacing(3);
+    border-radius: 9999px;
+  }
+
+  &.disabled {
+    background-color: rgba($white, 0.5);
+    color: rgba($black, 0.5);
+    cursor: default;
+  }
+
+  @each $variant, $color in $variants {
+    &#{&}--#{$variant} {
+      background-color: $color;
+      color: $white;
+
+      &.disabled {
+        background-color: rgba($color, 0.5);
+        color: rgba($white, 0.5);
+      }
+    }
+  }
+}

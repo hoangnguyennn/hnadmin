@@ -1,57 +1,58 @@
 <script setup lang="ts">
-// import { ref } from 'vue'
+import { ref } from 'vue'
 
-// import BxInput from '@hn/components/common/BxInput.vue'
-// import BxTextarea from '@hn/components/common/BxTextarea.vue'
-// import BxButton from '@hn/components/common/BxButton.vue'
-// import BxSelect from '@hn/components/common/BxSelect.vue'
-// import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
-// import BxSwitch from '@hn/components/common/BxSwitch.vue'
-// import BxRadio from '@hn/components/common/BxRadio.vue'
-// import BxSlider from '@hn/components/common/BxSlider.vue'
-// import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
-// import BxAccordion from '@hn/components/common/BxAccordion.vue'
-// import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
+import BxInput from '@hn/components/common/BxInput.vue'
+import BxTextarea from '@hn/components/common/BxTextarea.vue'
+import BxButton from '@hn/components/common/BxButton.vue'
+import BxSelect from '@hn/components/common/BxSelect.vue'
+import BxCheckbox from '@hn/components/common/BxCheckbox.vue'
+import BxSwitch from '@hn/components/common/BxSwitch.vue'
+import BxRadio from '@hn/components/common/BxRadio.vue'
+import BxSlider from '@hn/components/common/BxSlider.vue'
+import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
+import BxAccordion from '@hn/components/common/BxAccordion.vue'
+import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
 import BxTable, { BxTableProps } from '@hn/components/common/BxTable.vue'
+import BxBadge from '@hn/components/common/BxBadge.vue'
 
-// const radio = ref()
-// const slider = ref(50)
-// const slider2 = ref(50)
-// const rangeSlider = ref<[number, number]>([20, 60])
-// const items: BxMenuProps['items'] = [
-//   {
-//     id: '1',
-//     title: 'Navigator 1',
-//     childrens: [
-//       { id: '1_1', title: 'Item 1' },
-//       { id: '1_2', title: 'Item 2' },
-//       { id: '1_3', title: 'Item 3', to: '/' }
-//     ]
-//   },
-//   {
-//     id: '2',
-//     title: 'Navigator 2',
-//     childrens: [
-//       { id: '2_1', title: 'Item 1' },
-//       { id: '2_2', title: 'Item 2' },
-//       { id: '2_3', title: 'Item 3', to: '/' }
-//     ]
-//   },
-//   {
-//     id: '3',
-//     title: 'Navigator 3',
-//     childrens: [
-//       { id: '3_1', title: 'Item 1' },
-//       { id: '3_2', title: 'Item 2' },
-//       { id: '3_3', title: 'Item 3', to: '/' }
-//     ]
-//   },
-//   {
-//     id: '4',
-//     title: 'Navigator 4',
-//     to: '/'
-//   }
-// ]
+const radio = ref()
+const slider = ref(50)
+const slider2 = ref(50)
+const rangeSlider = ref<[number, number]>([20, 60])
+const items: BxMenuProps['items'] = [
+  {
+    id: '1',
+    title: 'Navigator 1',
+    childrens: [
+      { id: '1_1', title: 'Item 1' },
+      { id: '1_2', title: 'Item 2' },
+      { id: '1_3', title: 'Item 3', to: '/' }
+    ]
+  },
+  {
+    id: '2',
+    title: 'Navigator 2',
+    childrens: [
+      { id: '2_1', title: 'Item 1' },
+      { id: '2_2', title: 'Item 2' },
+      { id: '2_3', title: 'Item 3', to: '/' }
+    ]
+  },
+  {
+    id: '3',
+    title: 'Navigator 3',
+    childrens: [
+      { id: '3_1', title: 'Item 1' },
+      { id: '3_2', title: 'Item 2' },
+      { id: '3_3', title: 'Item 3', to: '/' }
+    ]
+  },
+  {
+    id: '4',
+    title: 'Navigator 4',
+    to: '/'
+  }
+]
 
 const columns: BxTableProps['columns'] = [
   {
@@ -170,7 +171,7 @@ const data: SampleRecord[] = [
 
 <template>
   <div class="p-10">
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Input</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -186,9 +187,9 @@ const data: SampleRecord[] = [
           error-message="The input is required."
         />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Textarea</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -210,9 +211,9 @@ const data: SampleRecord[] = [
         <h4>Auto size</h4>
         <bx-textarea placeholder="Please input" auto-size />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Button</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -261,9 +262,9 @@ const data: SampleRecord[] = [
           <bx-button disabled outlined variant="gray">Click me</bx-button>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Select</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -309,9 +310,9 @@ const data: SampleRecord[] = [
           error-message="The select is required."
         />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Checkbox</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -326,9 +327,9 @@ const data: SampleRecord[] = [
         <bx-checkbox label="Option 1" disabled />
         <bx-checkbox label="Option 2" disabled :model-value="true" />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Switch</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -343,9 +344,9 @@ const data: SampleRecord[] = [
         <bx-switch label="Option 1" disabled />
         <bx-switch label="Option 2" disabled :model-value="true" />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Radio</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -361,9 +362,9 @@ const data: SampleRecord[] = [
         <bx-radio label="Option 1" disabled />
         <bx-radio label="Option 2" disabled :model-value="true" />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Slider</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -372,9 +373,9 @@ const data: SampleRecord[] = [
 
         <bx-slider v-model="slider2" disabled />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Range slider</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -383,9 +384,9 @@ const data: SampleRecord[] = [
 
         <bx-range-slider v-model="rangeSlider" disabled />
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Accordion</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -396,15 +397,15 @@ const data: SampleRecord[] = [
           aliquip ex ea commodo consequat.
         </bx-accordion>
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
+    <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Menu</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
         <bx-menu :items="items"></bx-menu>
       </div>
-    </div> -->
+    </div>
 
     <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Table</h2>
@@ -419,6 +420,39 @@ const data: SampleRecord[] = [
             </div>
           </template>
         </bx-table>
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Badge</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <h4>Default</h4>
+        <div style="display: flex; gap: 10px">
+          <bx-badge variant="blue">99+</bx-badge>
+          <bx-badge variant="green">99+</bx-badge>
+          <bx-badge variant="red">99+</bx-badge>
+          <bx-badge variant="yellow">99+</bx-badge>
+          <bx-badge variant="gray">99+</bx-badge>
+        </div>
+
+        <h4>Rounded</h4>
+        <div style="display: flex; gap: 10px">
+          <bx-badge rounded variant="blue">99+</bx-badge>
+          <bx-badge rounded variant="green">99+</bx-badge>
+          <bx-badge rounded variant="red">99+</bx-badge>
+          <bx-badge rounded variant="yellow">99+</bx-badge>
+          <bx-badge rounded variant="gray">99+</bx-badge>
+        </div>
+
+        <h4>Dot</h4>
+        <div style="display: flex; gap: 10px">
+          <bx-badge dot variant="blue">99+</bx-badge>
+          <bx-badge dot variant="green">99+</bx-badge>
+          <bx-badge dot variant="red">99+</bx-badge>
+          <bx-badge dot variant="yellow">99+</bx-badge>
+          <bx-badge dot variant="gray">99+</bx-badge>
+        </div>
       </div>
     </div>
   </div>
