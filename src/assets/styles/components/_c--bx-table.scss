@@ -1,0 +1,61 @@
+.bx-table {
+  display: flex;
+  flex-direction: column;
+
+  table {
+    width: 100%;
+    background-color: $white;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: border(rgba($gray, 0.2));
+    }
+
+    thead {
+      th {
+        color: $gray;
+      }
+    }
+
+    tbody {
+      tr {
+        &:hover {
+          td {
+            background-color: rgba($blue, 0.1);
+          }
+        }
+      }
+    }
+  }
+
+  &.striped {
+    tbody {
+      tr:nth-child(2n) {
+        td {
+          background-color: rgba($gray, 0.1);
+        }
+      }
+    }
+  }
+
+  &.bordered {
+    th,
+    td {
+      border: border(rgba($gray, 0.2));
+    }
+  }
+
+  &__body {
+    flex: 1;
+    overflow: auto;
+  }
+
+  & table &__cell--scrollbar {
+    width: 6px;
+    padding: 0;
+  }
+}

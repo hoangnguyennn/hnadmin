@@ -10,45 +10,160 @@
 // import BxRadio from '@hn/components/common/BxRadio.vue'
 // import BxSlider from '@hn/components/common/BxSlider.vue'
 // import BxRangeSlider from '@hn/components/common/BxRangeSlider.vue'
-import BxAccordion from '@hn/components/common/BxAccordion.vue'
-import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
+// import BxAccordion from '@hn/components/common/BxAccordion.vue'
+// import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
+import BxTable, { BxTableProps } from '@hn/components/common/BxTable.vue'
 
 // const radio = ref()
 // const slider = ref(50)
 // const slider2 = ref(50)
 // const rangeSlider = ref<[number, number]>([20, 60])
-const items: BxMenuProps['items'] = [
+// const items: BxMenuProps['items'] = [
+//   {
+//     id: '1',
+//     title: 'Navigator 1',
+//     childrens: [
+//       { id: '1_1', title: 'Item 1' },
+//       { id: '1_2', title: 'Item 2' },
+//       { id: '1_3', title: 'Item 3', to: '/' }
+//     ]
+//   },
+//   {
+//     id: '2',
+//     title: 'Navigator 2',
+//     childrens: [
+//       { id: '2_1', title: 'Item 1' },
+//       { id: '2_2', title: 'Item 2' },
+//       { id: '2_3', title: 'Item 3', to: '/' }
+//     ]
+//   },
+//   {
+//     id: '3',
+//     title: 'Navigator 3',
+//     childrens: [
+//       { id: '3_1', title: 'Item 1' },
+//       { id: '3_2', title: 'Item 2' },
+//       { id: '3_3', title: 'Item 3', to: '/' }
+//     ]
+//   },
+//   {
+//     id: '4',
+//     title: 'Navigator 4',
+//     to: '/'
+//   }
+// ]
+
+const columns: BxTableProps['columns'] = [
   {
-    id: '1',
-    title: 'Navigator 1',
-    childrens: [
-      { id: '1_1', title: 'Item 1' },
-      { id: '1_2', title: 'Item 2' },
-      { id: '1_3', title: 'Item 3', to: '/' }
-    ]
+    title: 'Mã bài đăng',
+    dataKey: 'id',
+    type: 'text'
   },
   {
-    id: '2',
-    title: 'Navigator 2',
-    childrens: [
-      { id: '2_1', title: 'Item 1' },
-      { id: '2_2', title: 'Item 2' },
-      { id: '2_3', title: 'Item 3', to: '/' }
-    ]
+    title: 'Tiêu đề',
+    dataKey: 'title',
+    type: 'text'
   },
   {
-    id: '3',
-    title: 'Navigator 3',
-    childrens: [
-      { id: '3_1', title: 'Item 1' },
-      { id: '3_2', title: 'Item 2' },
-      { id: '3_3', title: 'Item 3', to: '/' }
-    ]
+    title: 'Người đăng',
+    dataKey: 'user',
+    type: 'text'
   },
   {
-    id: '4',
-    title: 'Navigator 4',
-    to: '/'
+    title: 'Ngày tạo',
+    dataKey: 'createdAt',
+    type: 'date'
+  },
+  {
+    title: 'Ngày cập nhật',
+    dataKey: 'updatedAt',
+    type: 'date'
+  },
+  {
+    title: 'Hành động',
+    dataKey: 'action',
+    type: 'custom'
+  }
+]
+
+interface SampleRecord {
+  id: string
+  title: string
+  user: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+const data: SampleRecord[] = [
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: '#001',
+    title: 'Nhà cho thuê',
+    user: 'Nguyễn Hoàng',
+    createdAt: new Date(),
+    updatedAt: new Date()
   }
 ]
 </script>
@@ -270,7 +385,7 @@ const items: BxMenuProps['items'] = [
       </div>
     </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Accordion</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
@@ -281,13 +396,29 @@ const items: BxMenuProps['items'] = [
           aliquip ex ea commodo consequat.
         </bx-accordion>
       </div>
-    </div>
+    </div> -->
 
-    <div class="mt-5 py-5" style="border-top: 3px solid">
+    <!-- <div class="mt-5 py-5" style="border-top: 3px solid">
       <h2>Menu</h2>
 
       <div style="display: flex; flex-direction: column; gap: 20px">
         <bx-menu :items="items"></bx-menu>
+      </div>
+    </div> -->
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Table</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-table :columns="columns" :data="data">
+          <template #[`item.action`]="{ item }">
+            <div style="display: flex; gap: 10px">
+              <router-link :to="`/${item.id}`">Xem trên web</router-link>
+              <router-link to="/">Sửa</router-link>
+              <router-link to="/">Xóa</router-link>
+            </div>
+          </template>
+        </bx-table>
       </div>
     </div>
   </div>
