@@ -14,6 +14,7 @@ import BxAccordion from '@hn/components/common/BxAccordion.vue'
 import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
 import BxTable, { BxTableProps } from '@hn/components/common/BxTable.vue'
 import BxBadge from '@hn/components/common/BxBadge.vue'
+import BxPagination from '@hn/components/common/BxPagination.vue'
 
 const radio = ref()
 const slider = ref(50)
@@ -175,6 +176,10 @@ const data: SampleRecord[] = [
     updatedAt: new Date()
   }
 ]
+
+const currentPage = ref(1)
+const pageSize = ref(10)
+const total = ref(695)
 </script>
 
 <template>
@@ -480,6 +485,19 @@ const data: SampleRecord[] = [
           <bx-badge dot variant="yellow">99+</bx-badge>
           <bx-badge dot variant="gray">99+</bx-badge>
         </div>
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Pagination</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-pagination
+          v-model:current-page="currentPage"
+          v-model:page-size="pageSize"
+          :total="total"
+          :page-sizes="[10, 20, 50, 100]"
+        ></bx-pagination>
       </div>
     </div>
   </div>

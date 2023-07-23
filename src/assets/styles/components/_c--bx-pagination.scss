@@ -1,0 +1,79 @@
+.bx-pagination {
+  display: flex;
+  gap: spacing(4);
+
+  &__pager {
+    display: flex;
+    gap: spacing(4);
+  }
+
+  &__control,
+  &__item {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($gray, 0.2);
+    border-radius: spacing(4);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__control {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-left: border($black, 2px);
+      border-bottom: border($black, 2px);
+    }
+
+    &.disabled {
+      background-color: rgba($gray, 0.1);
+      cursor: default;
+
+      &:before {
+        border-color: rgba($black, 0.5);
+      }
+    }
+  }
+
+  &__control--prev:before {
+    transform: rotate(45deg);
+    margin-left: spacing(1);
+  }
+
+  &__control--next:before {
+    transform: rotate(-135deg);
+    margin-right: spacing(1);
+  }
+
+  &__item {
+    &:hover {
+      color: $blue;
+    }
+
+    &.active {
+      background-color: $blue;
+      color: $white;
+    }
+
+    &.disabled,
+    &.skip {
+      background-color: rgba($gray, 0.1);
+      color: rgba($black, 0.5);
+      cursor: default;
+    }
+  }
+
+  &__sizes {
+    .bx-select__placeholder {
+      min-width: 150px;
+      border-radius: spacing(4);
+    }
+  }
+}
