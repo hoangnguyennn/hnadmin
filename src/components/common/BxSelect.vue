@@ -18,7 +18,7 @@
       <div class="caret"></div>
     </div>
 
-    <div class="bx-select__error">{{ errorMessage }}</div>
+    <div v-if="errorMessage" class="bx-select__error">{{ errorMessage }}</div>
 
     <Teleport to="#modal">
       <div
