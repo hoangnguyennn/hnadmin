@@ -54,6 +54,14 @@ const items: BxMenuProps['items'] = [
   }
 ]
 
+const checkbox1 = ref(true)
+const checkbox2 = ref(false)
+const checkbox3 = ref()
+
+const indeterminate1 = ref(true)
+const indeterminate2 = ref(true)
+const indeterminate3 = ref(true)
+
 const columns: BxTableProps['columns'] = [
   {
     title: 'Mã bài đăng',
@@ -326,6 +334,25 @@ const data: SampleRecord[] = [
         <h4>Disabled</h4>
         <bx-checkbox label="Option 1" disabled />
         <bx-checkbox label="Option 2" disabled :model-value="true" />
+
+        <h4>Indeterminate</h4>
+        <bx-checkbox
+          v-model="checkbox1"
+          v-model:indeterminate="indeterminate1"
+          label="True"
+        />
+        <bx-checkbox
+          v-model="checkbox2"
+          v-model:indeterminate="indeterminate2"
+          label="False"
+        />
+        <bx-checkbox
+          v-model="checkbox3"
+          v-model:indeterminate="indeterminate3"
+          label="Undefined"
+        />
+
+        <bx-button @click="indeterminate1 = true">Set to true</bx-button>
       </div>
     </div>
 
