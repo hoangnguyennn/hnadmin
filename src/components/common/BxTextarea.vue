@@ -80,7 +80,7 @@ const inputClasses = computed(() => {
 const handleChangeHeight = () => {
   const textarea = textareaRef.value
   if (props.autoSize && textarea) {
-    textarea.style.height = '1px'
+    textarea.style.height = 'auto'
 
     const styles = getComputedStyle(textarea)
     const {
