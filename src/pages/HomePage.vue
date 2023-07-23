@@ -15,6 +15,7 @@ import BxMenu, { BxMenuProps } from '@hn/components/common/BxMenu.vue'
 import BxTable, { BxTableProps } from '@hn/components/common/BxTable.vue'
 import BxBadge from '@hn/components/common/BxBadge.vue'
 import BxPagination from '@hn/components/common/BxPagination.vue'
+import BxInputNumber from '@hn/components/common/BxInputNumber.vue'
 
 const radio = ref()
 const slider = ref(50)
@@ -498,6 +499,24 @@ const total = ref(695)
           :total="total"
           :page-sizes="[10, 20, 50, 100]"
         ></bx-pagination>
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Input Number</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <h4>Default</h4>
+        <bx-input-number placeholder="Please input" />
+
+        <h4>Disabled</h4>
+        <bx-input-number placeholder="Please input" disabled />
+
+        <h4>Error</h4>
+        <bx-input-number
+          placeholder="Please input"
+          error-message="The input is required."
+        />
       </div>
     </div>
   </div>
