@@ -9,7 +9,7 @@
     transform: translateY(-50%);
     height: 4px;
     background-color: rgba($gray, 0.2);
-    border-radius: 2px;
+    border-radius: spacing(1);
     cursor: pointer;
   }
 
@@ -20,7 +20,7 @@
     transform: translateY(-50%);
     height: 4px;
     background-color: $blue;
-    border-radius: 2px;
+    border-radius: spacing(1);
     cursor: pointer;
   }
 
