@@ -27,6 +27,7 @@ interface BxCheckboxProps {
   label?: string
   value?: any
   modelValue?: any
+  indeterminate?: boolean
   disabled?: boolean
   tabindex?: number
 }
@@ -36,12 +37,14 @@ const props = withDefaults(defineProps<BxCheckboxProps>(), {
   label: undefined,
   value: undefined,
   modelValue: undefined,
+  indeterminate: undefined,
   disabled: false,
   tabindex: 0
 })
 
 const emit = defineEmits<{
   (event: 'update:model-value', value: any): void
+  (event: 'update:indeterminate', value: boolean): void
 }>()
 
 const uid = getUid()
@@ -49,7 +52,14 @@ const id = computed(() => props.id ?? `checkbox-${uid}`)
 
 const checked = computed({
   get: () => props.modelValue,
-  set: value => emit('update:model-value', value)
+  set: value => {
+    emit('update:model-value', value)
+
+    // emit indeterminate state if using it
+    if (props.indeterminate !== undefined) {
+      emit('update:indeterminate', false)
+    }
+  }
 })
 
 const checkboxClasses = computed(() => {
@@ -57,6 +67,10 @@ const checkboxClasses = computed(() => {
 
   if (props.disabled) {
     classes.push('disabled')
+  }
+
+  if (props.indeterminate) {
+    classes.push('indeterminate')
   }
 
   return classes.join(', ')

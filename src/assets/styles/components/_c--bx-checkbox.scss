@@ -84,4 +84,20 @@
   &.disabled &__label {
     cursor: default;
   }
+
+  &.indeterminate &__control + &__icon {
+    background-color: $blue;
+    @include flex_center;
+
+    &:before {
+      content: '';
+      margin-bottom: 0;
+      transform: rotate(0);
+      width: 10px;
+      height: 3px;
+      background-color: $white;
+      border: none;
+      border-radius: 1px;
+    }
+  }
 }
