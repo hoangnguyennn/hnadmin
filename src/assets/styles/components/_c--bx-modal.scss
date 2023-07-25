@@ -1,0 +1,78 @@
+.bx-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba($gray, 0.5);
+  transition: all 0.2s ease-in-out;
+  z-index: 999;
+
+  & &__content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    padding: 20px 24px;
+    background-color: $white;
+    border-radius: spacing(4);
+    position: relative;
+  }
+
+  & &__header {
+    margin-bottom: spacing(4);
+  }
+
+  & &__title {
+    font-weight: 500;
+    overflow-wrap: break-word;
+  }
+
+  & &__close-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 6px;
+    right: 7px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $gray;
+    }
+
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  & &__body {
+    max-height: calc(100vh - 200px - 40px - 40px);
+  }
+
+  & &__footer {
+    margin-top: spacing(4);
+  }
+
+  & &__actions {
+    display: flex;
+    gap: spacing(5);
+    justify-content: flex-end;
+  }
+}

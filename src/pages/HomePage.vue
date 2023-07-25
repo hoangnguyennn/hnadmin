@@ -16,6 +16,7 @@ import BxTable, { BxTableProps } from '@hn/components/common/BxTable.vue'
 import BxBadge from '@hn/components/common/BxBadge.vue'
 import BxPagination from '@hn/components/common/BxPagination.vue'
 import BxInputNumber from '@hn/components/common/BxInputNumber.vue'
+import BxModal from '@hn/components/common/BxModal.vue'
 
 const radio = ref()
 const slider = ref(50)
@@ -181,6 +182,8 @@ const data: SampleRecord[] = [
 const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(695)
+
+const isOpen = ref(true)
 </script>
 
 <template>
@@ -517,6 +520,22 @@ const total = ref(695)
           placeholder="Please input"
           error-message="The input is required."
         />
+      </div>
+    </div>
+
+    <div class="mt-5 py-5" style="border-top: 3px solid">
+      <h2>Modal</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <bx-button @click="isOpen = true">Open modal</bx-button>
+        <bx-modal v-model="isOpen" title="HN Modal">
+          <p>HN Content</p>
+          <p>HN Content</p>
+          <p>HN Content</p>
+          <p>HN Content</p>
+          <p>HN Content</p>
+          <p>HN Content</p>
+        </bx-modal>
       </div>
     </div>
   </div>
