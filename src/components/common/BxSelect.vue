@@ -8,7 +8,7 @@
     <div
       ref="bxSelectPlaceholderRef"
       class="bx-select__placeholder"
-      @click="onToggle"
+      @click.stop="onToggle"
     >
       <div v-if="selectionPlaceholder" class="selection">
         {{ selectionPlaceholder }}
@@ -33,7 +33,7 @@
           :key="index"
           class="bx-select__item"
           :class="getItemClasses(item)"
-          @click="onSelect(item)"
+          @click.stop="onSelect(item)"
         >
           <bx-checkbox
             v-if="multiple"

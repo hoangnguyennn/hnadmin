@@ -1,6 +1,6 @@
 <template>
   <div class="bx-accordion" :class="accordionClasses">
-    <div class="bx-accordion__title" @click="onToggle">
+    <div class="bx-accordion__title" @click.stop="onToggle">
       <slot name="title">{{ title }}</slot>
       <slot name="icon">
         <div class="bx-accordion__icon"></div>
