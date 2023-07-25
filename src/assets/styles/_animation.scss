@@ -14,3 +14,22 @@
   top: 0;
   z-index: -1;
 }
+
+// modal
+.modal-enter-from .bx-modal__content,
+.modal-leave-to .bx-modal__content {
+  transition: all 0.2s ease-in-out;
+  transition-property: top opacity;
+  position: relative;
+  top: -20px;
+  opacity: 0;
+}
+
+.modal-enter-to .bx-modal__content,
+.modal-leave-from .bx-modal__content {
+  transition: all 0.2s ease-in-out;
+  transition-property: top opacity;
+  position: relative;
+  top: 0;
+  opacity: 1;
+}
