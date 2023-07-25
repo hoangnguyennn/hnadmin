@@ -3,7 +3,7 @@
     class="bx-button"
     :class="btnClasses"
     :disabled="disabled"
-    @click="$emit('click', $event)"
+    @click.stop="$emit('click', $event)"
   >
     <slot></slot>
   </button>

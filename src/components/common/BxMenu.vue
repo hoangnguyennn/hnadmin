@@ -7,7 +7,7 @@
         :class="{ show: isOpenElement === item.id }"
         style="--level: 1"
       >
-        <div class="bx-menu__title" @click="setOpenElement(item.id)">
+        <div class="bx-menu__title" @click.stop="setOpenElement(item.id)">
           {{ item.title }}
           <div class="bx-menu__icon"></div>
         </div>
@@ -19,7 +19,7 @@
             class="bx-menu__item"
             :class="{ active: activeItem === child.id }"
             style="--level: 2"
-            @click="onSelect(child.id)"
+            @click.stop="onSelect(child.id)"
           >
             <router-link v-if="child.to" :to="child.to" class="bx-menu__link">
               {{ child.title }}
@@ -34,7 +34,7 @@
         class="bx-menu__item"
         :class="{ active: activeItem === item.id }"
         style="--level: 1"
-        @click="onSelect(item.id)"
+        @click.stop="onSelect(item.id)"
       >
         <router-link v-if="item.to" :to="item.to" class="bx-menu__link">
           {{ item.title }}

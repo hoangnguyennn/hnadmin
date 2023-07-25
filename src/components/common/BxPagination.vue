@@ -4,7 +4,7 @@
       <div
         class="bx-pagination__control bx-pagination__control--prev"
         :class="{ disabled: _currentPage === 1 }"
-        @click="onGoToPrev"
+        @click.stop="onGoToPrev"
       ></div>
 
       <div
@@ -12,7 +12,7 @@
         :key="page"
         class="bx-pagination__item"
         :class="{ active: page === _currentPage, skip: isSkipPage(page) }"
-        @click="onChangePage(page)"
+        @click.stop="onChangePage(page)"
       >
         {{ isSkipPage(page) ? '...' : page }}
       </div>
@@ -20,7 +20,7 @@
       <div
         class="bx-pagination__control bx-pagination__control--next"
         :class="{ disabled: _currentPage === numberOfPages }"
-        @click="onGoToNext"
+        @click.stop="onGoToNext"
       ></div>
     </div>
     <div v-if="pageSizes?.length" class="bx-pagination__sizes">
@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
 import BxSelect from './BxSelect.vue'
 
 export interface BxPaginationProps {
@@ -113,14 +113,6 @@ const renderedPages = computed(() => {
     numberOfPages.value
   ]
 })
-
-watch(
-  renderedPages,
-  newRenderedPages => {
-    console.log(newRenderedPages)
-  },
-  { immediate: true }
-)
 
 const onChangePage = (page: number) => {
   if (!isSkipPage(page)) {
