@@ -15,6 +15,10 @@
       border-bottom: border(rgba($gray, 0.2));
     }
 
+    th {
+      font-weight: 500;
+    }
+
     thead {
       th {
         color: $gray;
