@@ -1,9 +1,11 @@
 <template>
   <div class="bx-input" :class="inputClasses">
     <input
+      :id="id"
       v-model="modelValue"
       type="text"
       class="bx-input__control"
+      :name="name"
       :placeholder="placeholder"
       :disabled="disabled"
     />
@@ -16,8 +18,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { getUid } from '@hn/utils/common.util'
 
 interface BxInputProps {
+  id?: string
+  name?: string
   placeholder?: string
   disabled?: boolean
   errorMessage?: string
@@ -25,6 +30,8 @@ interface BxInputProps {
 }
 
 const props = withDefaults(defineProps<BxInputProps>(), {
+  id: undefined,
+  name: undefined,
   placeholder: undefined,
   disabled: false,
   errorMessage: undefined,
@@ -34,6 +41,9 @@ const props = withDefaults(defineProps<BxInputProps>(), {
 const emit = defineEmits<{
   (e: 'update:model-value', value: BxInputProps['modelValue']): void
 }>()
+
+const uid = getUid()
+const id = computed(() => props.id ?? `input-${uid}`)
 
 const modelValue = computed({
   get: () => props.modelValue,

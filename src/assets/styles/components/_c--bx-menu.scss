@@ -13,6 +13,7 @@
     color: inherit;
     cursor: pointer;
     user-select: none;
+    outline: none;
 
     &:hover {
       background-color: rgba($blue, 0.1);

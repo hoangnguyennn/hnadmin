@@ -1,7 +1,7 @@
 // UTIL CLASSES
 @mixin spacing_classes($list) {
-  @for $i from 0 through 10 {
-    @each $prefix, $properties in $list {
+  @each $prefix, $properties in $list {
+    @for $i from 0 through 10 {
       .#{$prefix}-#{$i} {
         @each $property in $properties {
           #{$property}: spacing($i);

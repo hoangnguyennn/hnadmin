@@ -1,0 +1,9 @@
+.bx-col {
+  flex: 1;
+}
+
+@for $i from 1 through $grid_columns {
+  .bx-col-#{$i} {
+    flex: 0 0 calc(100% / $grid_columns * $i);
+  }
+}
