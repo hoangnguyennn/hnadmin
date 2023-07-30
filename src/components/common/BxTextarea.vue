@@ -1,11 +1,13 @@
 <template>
   <div class="bx-textarea" :class="inputClasses">
     <textarea
+      :id="id"
       ref="textareaRef"
       v-model="modelValue"
       type="text"
       :rows="rows"
       class="bx-textarea__control"
+      :name="name"
       :placeholder="placeholder"
       :disabled="disabled"
       @input="handleChangeHeight"
@@ -20,10 +22,12 @@
 </template>
 
 <script setup lang="ts">
-import CommonUtil from '@hn/utils/common.util'
+import CommonUtil, { getUid } from '@hn/utils/common.util'
 import { computed, onMounted, ref } from 'vue'
 
 interface BxTextareaProps {
+  id?: string
+  name?: string
   placeholder?: string
   disabled?: boolean
   errorMessage?: string
@@ -36,6 +40,8 @@ interface BxTextareaProps {
 }
 
 const props = withDefaults(defineProps<BxTextareaProps>(), {
+  id: undefined,
+  name: undefined,
   placeholder: undefined,
   disabled: false,
   errorMessage: undefined,
@@ -50,6 +56,9 @@ const props = withDefaults(defineProps<BxTextareaProps>(), {
 const emit = defineEmits<{
   (e: 'update:model-value', value: BxTextareaProps['modelValue']): void
 }>()
+
+const uid = getUid()
+const id = computed(() => props.id ?? `textarea-${uid}`)
 
 const textareaRef = ref<HTMLTextAreaElement>()
 

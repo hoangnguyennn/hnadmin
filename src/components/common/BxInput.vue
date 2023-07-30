@@ -5,6 +5,7 @@
       v-model="modelValue"
       type="text"
       class="bx-input__control"
+      :name="name"
       :placeholder="placeholder"
       :disabled="disabled"
     />
@@ -21,6 +22,7 @@ import { getUid } from '@hn/utils/common.util'
 
 interface BxInputProps {
   id?: string
+  name?: string
   placeholder?: string
   disabled?: boolean
   errorMessage?: string
@@ -29,6 +31,7 @@ interface BxInputProps {
 
 const props = withDefaults(defineProps<BxInputProps>(), {
   id: undefined,
+  name: undefined,
   placeholder: undefined,
   disabled: false,
   errorMessage: undefined,
